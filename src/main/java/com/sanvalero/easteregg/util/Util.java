@@ -1,4 +1,4 @@
-package com.sanvalero.netflix.util;
+package com.sanvalero.easteregg.util;
 
 /**
  * Clase con métodos estáticos de utilidad
