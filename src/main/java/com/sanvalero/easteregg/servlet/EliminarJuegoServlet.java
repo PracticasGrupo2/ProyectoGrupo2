@@ -1,6 +1,6 @@
-package com.sanvalero.netflix.servlet;
+package com.sanvalero.easteregg.servlet;
 
-import com.sanvalero.netflix.dao.MovieDAO;
+import com.sanvalero.easteregg.dao.JuegoDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet que elimina una película a la base de datos
  */
-@WebServlet(name = "remove-movie", urlPatterns = {"/remove-movie"})
-public class RemoveMovieServlet extends HttpServlet {
+@WebServlet(name = "eliminar-juego", urlPatterns = {"/eliminar-juego"})
+public class EliminarJuegoServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
-        int movieId = Integer.parseInt(request.getParameter("id"));
-        MovieDAO movieDAO = new MovieDAO();
-        movieDAO.removeMovie(movieId);
+        int idJuego = Integer.parseInt(request.getParameter("id"));
+        JuegoDAO juegoDAO = new JuegoDAO();
+        juegoDAO.eliminarJuego(idJuego);
         
-        response.sendRedirect("movies?message=Pelicula eliminada");
+        response.sendRedirect("juegos?message=Juego eliminada");
     }
     
     

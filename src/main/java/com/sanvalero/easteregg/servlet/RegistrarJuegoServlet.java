@@ -1,7 +1,7 @@
-package com.sanvalero.netflix.servlet;
+package com.sanvalero.easteregg.servlet;
 
-import com.sanvalero.netflix.dao.MovieDAO;
-import com.sanvalero.netflix.domain.Movie;
+import com.sanvalero.easteregg.dao.JuegoDAO;
+import com.sanvalero.easteregg.domain.Juego;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -14,21 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet que añade una película a la base de datos
  */
-@WebServlet(name = "add-movie", urlPatterns = {"/add-movie"})
-public class AddMovieServlet extends HttpServlet {
+@WebServlet(name = "registrar-juego", urlPatterns = {"/registrar-juego"})
+public class RegistrarJuegoServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
-        String title = request.getParameter("title");
-        String director = request.getParameter("director");
-        int duration = Integer.parseInt(request.getParameter("duration"));
-        String category = request.getParameter("category");
-        boolean viewed = request.getParameter("viewed").equals("on");
+        String tituloJuego = request.getParameter("titulo");
+        String descripcionJuego = request.getParameter("descripcion");
         
-        Movie movie = new Movie(title, director, duration, category, viewed);
-        MovieDAO movieDAO = new MovieDAO();
+        Juego juego = new Juego(tituloJuego, descripcionJuego);
+        JuegoDAO juegoDAO = new JuegoDAO();
         try {
-            movieDAO.addMovie(movie);
+            juegoDAO.registrarJuego(juego);
             
             PrintWriter out = response.getWriter();
             response.sendRedirect("myform.jsp?status=ok");

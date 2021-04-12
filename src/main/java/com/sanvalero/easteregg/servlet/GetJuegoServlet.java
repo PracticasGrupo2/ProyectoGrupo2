@@ -1,7 +1,7 @@
-package com.sanvalero.netflix.servlet;
+package com.sanvalero.easteregg.servlet;
 
-import com.sanvalero.netflix.dao.MovieDAO;
-import com.sanvalero.netflix.domain.Movie;
+import com.sanvalero.easteregg.dao.JuegoDAO;
+import com.sanvalero.easteregg.domain.Juego;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -13,24 +13,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet que obtiene la lista completa de peliculas de la base de datos
+ * Servlet que obtiene la lista completa de juegos de la base de datos
  */
-@WebServlet(name = "movies", urlPatterns = {"/movies"})
-public class GetMoviesServlet extends HttpServlet {
+@WebServlet(name = "juegos", urlPatterns = {"/juegos"})
+public class GetJuegoServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         PrintWriter out = response.getWriter();
-        out.println("<p>Listado de peliculas (con servlet)</p>");
-        MovieDAO movieDAO = new MovieDAO();
+        out.println("<p>Listado de juegos (con servlet)</p>");
+        JuegoDAO juegoDAO = new JuegoDAO();
         try {
-            ArrayList<Movie> movies = movieDAO.getAllMovies();
+            ArrayList<Juego> juegos = juegoDAO.getJuegos();
             out.println("<ul>");
-            for (Movie movie : movies) {
-                out.println("<li>" + movie.getTitle() + " <a href='remove-movie?id=" + movie.getId() + "'>Eliminar</a></li>");
+            for (Juego juego : juegos) {
+                out.println("<li>" + juego.getTituloJuego()+ " <a href='eliminar-juegos?id=" + juego.getIdJuego()+ "'>Eliminar</a></li>");
             }
-            // FIXME pelicula de ejemplo (eliminar cuando se desarrolle el listado)
-            out.println("<li>Pelicula de ejemplo</li> <a href='remove-movie?id=23'>Eliminar</a></li>");
+            // FIXME juego de ejemplo (eliminar cuando se desarrolle el listado)
+            out.println("<li>Juego de ejemplo</li> <a href='eliminar-juego?id=23'>Eliminar</a></li>");
             out.println("</ul>");
 
             // Muestra el mensaje (si lo hay)
