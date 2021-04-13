@@ -72,6 +72,23 @@ public class JuegoDAO {
         
     }
     
+    public ArrayList<Juego> getJuego(int idJuego) throws SQLException{
+        String consulta = "SELECT TITULO, DESCRIPCION FROM JUEGOS WHERE ID_JUEGO = ?";
+        
+        ArrayList<Juego> datosJuego = new ArrayList<>();
+        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
+        sentencia.setInt(1,idJuego);
+        ResultSet resultado = sentencia.executeQuery();
+        
+        while(resultado.next()){
+            Juego juego = new Juego();
+            juego.setTituloJuego(resultado.getString(1));
+            juego.setDescripcionJuego(resultado.getString(2));
+            datosJuego.add(juego);
+        }
+        return datosJuego;
+    }
+    
     /**
      * Elimina un juego
      * @param idJuego El id del juego a eliminar
@@ -91,6 +108,18 @@ public class JuegoDAO {
      * @param juego El juego con la información a modificar
      */
     public void modificarJuego(Juego juego) throws SQLException {
+        String consulta = "UPDATE JUEGOS SET TITULO = ?, DESCRIPCION = ? WHERE ID_JUEGO = ?";
         
+        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
+        sentencia.setString(1, juego.getTituloJuego());
+        sentencia.setString(2, juego.getDescripcionJuego());
+        sentencia.setInt(3, juego.getIdJuego());
+        sentencia.executeUpdate();
     }
+    
+    /*public void buscarJuego()
+    
+    String consulta = "SELECT * FROM JUEGOS WHERE ID_JUEGO = ?";
+    */
+    
 }

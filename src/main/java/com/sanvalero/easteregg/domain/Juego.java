@@ -13,7 +13,13 @@ public class Juego {
 
     public Juego() {
     }
-    
+
+    public Juego(int idJuego, String tituloJuego, String descripcionJuego) {
+        this.idJuego = idJuego;
+        this.tituloJuego = tituloJuego;
+        this.descripcionJuego = descripcionJuego;
+    }
+  
 
     public Juego(int idJuego, int idDesarrollador, int idGenero, String tituloJuego, String descripcionJuego) {
         this.idJuego = idJuego;
