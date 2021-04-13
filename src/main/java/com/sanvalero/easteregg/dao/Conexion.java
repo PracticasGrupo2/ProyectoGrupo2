@@ -17,6 +17,10 @@ public class Conexion {
     public Conexion() {
         conectar();
     }
+
+    public Connection getConexion() {
+        return conexion;
+    }
     
     /**
      * Conecta con la base de datos
@@ -41,9 +45,5 @@ public class Conexion {
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
-    }
-
-    PreparedStatement prepareStatement(String sql) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
