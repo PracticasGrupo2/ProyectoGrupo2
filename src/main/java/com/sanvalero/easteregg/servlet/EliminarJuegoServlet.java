@@ -2,6 +2,9 @@ package com.sanvalero.easteregg.servlet;
 
 import com.sanvalero.easteregg.dao.JuegoDAO;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,11 +19,18 @@ public class EliminarJuegoServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
+        
         int idJuego = Integer.parseInt(request.getParameter("id"));
         JuegoDAO juegoDAO = new JuegoDAO();
-        juegoDAO.eliminarJuego(idJuego);
         
-        response.sendRedirect("juegos?message=Juego eliminada");
+        try {
+            juegoDAO.eliminarJuego(idJuego);
+        } catch (SQLException sqle) {
+            Logger.getLogger(EliminarJuegoServlet.class.getName()).log(Level.SEVERE, null, sqle);
+            response.sendRedirect("juegos?message=Juego eliminada");
+        }
+        
+        
     }
     
     
