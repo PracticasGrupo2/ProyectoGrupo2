@@ -18,7 +18,7 @@
         <%
             for (Juego juego : juegos) {
         %>
-        <li><%= juego.getTituloJuego()%> <a href="eliminar-juego?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
+        <li><%= juego.getTituloJuego()%> <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
         <%    
             }
         %>

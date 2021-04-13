@@ -1,3 +1,4 @@
+<%@page import="com.sanvalero.easteregg.domain.Juego"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,16 +13,10 @@
             <input type="text" name="titulo"/><br/>
             Descripción:
             <input type="text" name="descripcion"/><br/>
-
-            <!--TODO: Modificar formulario de registro en RegistrarJuegoServlet.java-->
-            
-            <!--            Duración:
-            <input type="text" name="duration"/><br/>
-            Categoría:
-            <input type="text" name="category"/><br/>
-            Vista:
-            <input type="checkbox" name="viewed"/><br/>-->
-            
+            Desarrollador:
+            <input type="text" name="desarrollador"/><br/>
+            Género:
+            <input type="text" name="genero"/><br/>
             <input type="submit" value="Registrar"/>
         </form>
         

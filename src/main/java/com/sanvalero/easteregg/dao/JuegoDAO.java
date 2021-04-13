@@ -15,7 +15,21 @@ public class JuegoDAO {
         conexion = new Conexion();
     }
     
-    
+    /**
+     * Genera automáticamente una id nueva para registrar un juego
+     * @throws SQLException 
+     */
+    public int getIdNew() throws SQLException {
+        
+        String consulta = "SELECT MAX(ID_JUEGO) FROM JUEGOS";
+        
+        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
+        ResultSet resultado = sentencia.executeQuery();
+        resultado.next();
+        int idJuego = resultado.getInt(1);
+        
+        return idJuego + 1;
+    }
     
     /**
      * Añade un juego a la base de datos
@@ -24,6 +38,15 @@ public class JuegoDAO {
      */
     public void registrarJuego(Juego juego) throws SQLException {
         
+        String consulta = "INSERT INTO JUEGOS VALUES(?, ?, ?, ?, ?)";
+        
+        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
+        sentencia.setInt(1, juego.getIdJuego());
+        sentencia.setInt(2, juego.getIdDesarrollador());
+        sentencia.setInt(3, juego.getIdGenero());
+        sentencia.setString(4, juego.getTituloJuego());
+        sentencia.setString(5, juego.getDescripcionJuego());
+        sentencia.executeUpdate();
     }
     
     /**

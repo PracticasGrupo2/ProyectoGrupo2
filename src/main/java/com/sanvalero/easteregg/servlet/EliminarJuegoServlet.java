@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet que elimina una película a la base de datos
  */
-@WebServlet(name = "eliminar-juego", urlPatterns = {"/eliminar-juego"})
+@WebServlet(name = "eliminar-juegos", urlPatterns = {"/eliminar-juegos"})
 public class EliminarJuegoServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws
@@ -25,14 +25,11 @@ public class EliminarJuegoServlet extends HttpServlet {
         
         try {
             juegoDAO.eliminarJuego(idJuego);
+            response.sendRedirect("juegos?message=Juego eliminado");
         } catch (SQLException sqle) {
             Logger.getLogger(EliminarJuegoServlet.class.getName()).log(Level.SEVERE, null, sqle);
-            response.sendRedirect("juegos?message=Juego eliminada");
         }
-        
-        
     }
-    
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
