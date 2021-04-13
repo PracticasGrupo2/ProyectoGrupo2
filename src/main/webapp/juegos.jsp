@@ -34,13 +34,12 @@
         <%
             for (Juego juego : juegos) {
         %>
-        <li><%= juego.getTituloJuego()%> <a href="eliminar-juego?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
+        <li><%= juego.getTituloJuego()%> <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
         <%    
             }
         %>
         </ul>
-        <!-- FIXME juego de ejemplo (eliminar cuando se desarrolle el listado) -->
-        <li>Título de ejemplo <a href="eliminar-juego?id=45">Eliminar</a></li>
+        
         <%
             // Muestra el mensaje (si lo hay)
             String message = request.getParameter("message");

@@ -11,6 +11,10 @@ public class Juego {
     private String tituloJuego;
     private String descripcionJuego;
 
+    public Juego() {
+    }
+    
+
     public Juego(int idJuego, int idDesarrollador, int idGenero, String tituloJuego, String descripcionJuego) {
         this.idJuego = idJuego;
         this.idDesarrollador = idDesarrollador;
