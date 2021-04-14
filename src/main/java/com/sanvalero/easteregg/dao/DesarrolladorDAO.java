@@ -50,13 +50,13 @@ public class DesarrolladorDAO {
     }
     
 
-       public ArrayList<Desarrollador> getDesarrolladores() throws SQLException {  
+    public ArrayList<Desarrollador> getDesarrolladores() throws SQLException {  
         String consulta = "SELECT ID_DESARROLLADOR, NOMBRE_DESARROLLADOR, EMAIL, PAIS FROM DESARROLLADORES";
-        
+
         ArrayList<Desarrollador> listadoDesarrolladores = new ArrayList<>();
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
         ResultSet resultado = sentencia.executeQuery();
-        
+
         while(resultado.next()){
             Desarrollador desarrollador = new Desarrollador();
             desarrollador.setIdDesarrollador(resultado.getInt(1));
@@ -64,9 +64,24 @@ public class DesarrolladorDAO {
             desarrollador.setEmailDesarrollador(resultado.getString(3));
             desarrollador.setUbicacion(resultado.getString(4));
             listadoDesarrolladores.add(desarrollador);
-           
+
         }
         return listadoDesarrolladores;   
+    }
+    
+    public String getNombreDesarrollador(int idJuego) throws SQLException {
+        String consulta = "SELECT DE.NOMBRE_DESARROLLADOR FROM DESARROLLADORES DE INNER JOIN JUEGOS JU ON "
+                + "DE.ID_DESARROLLADOR = JU.ID_DESARROLLADOR WHERE JU.ID_JUEGO = ?";
+        
+        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
+        sentencia.setInt(1, idJuego);
+        ResultSet resultado = sentencia.executeQuery();
+        
+        resultado.next();
+        String desarrollador = resultado.getString(1);
+        
+        
+        return desarrollador;
     }
     
        /**
