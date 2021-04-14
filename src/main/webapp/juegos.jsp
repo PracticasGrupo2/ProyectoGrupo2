@@ -36,10 +36,15 @@
                 <%
                     JuegoDAO juegoDAO = new JuegoDAO();
                     ArrayList<Juego> juegos = juegoDAO.getJuegos();
+                    
+                    DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
+                    GeneroDAO generoDAO = new GeneroDAO();
                 %>
                 <ul>
                 <%
                     for (Juego juego : juegos) {
+                        String desarrollador = desarrolladorDAO.getNombreDesarrollador(juego.getIdJuego());
+                        String genero = generoDAO.getNombreGenero(juego.getIdJuego());
                 %>
                 <li><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div><br>
                 <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modificar</a><br>
