@@ -19,7 +19,7 @@ public class JuegoDAO {
      * Genera automáticamente una id nueva para registrar un juego
      * @throws SQLException 
      */
-    public int getIdNew() throws SQLException {
+    public int getNewId() throws SQLException {
         
         String consulta = "SELECT MAX(ID_JUEGO) FROM JUEGOS";
         

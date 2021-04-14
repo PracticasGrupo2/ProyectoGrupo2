@@ -19,7 +19,7 @@
           <a href="juegos">Ver lista</a>
           <a href="#">Detalle</a>
           <a href="#">Borrar</a>
-          <a href="myform.jsp">Registrar</a>         
+          <a href="registrarJuego.jsp">Registrar</a>         
         </div>
 
         <!-- Page content -->
