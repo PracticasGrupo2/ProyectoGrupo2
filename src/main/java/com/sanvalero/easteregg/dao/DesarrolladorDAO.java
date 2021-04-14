@@ -93,4 +93,15 @@ public class DesarrolladorDAO {
         sentencia.setString(4, desarrollador.getUbicacion());
         sentencia.executeUpdate();
     }
+    
+       public void modificarDesarrollador(Desarrollador desarrollador) throws SQLException {
+        String consulta = "UPDATE DESARROLLADORES SET NOMBRE_DESARROLLADOR = ?, EMAIL = ?, PAIS = ? WHERE ID_DESARROLLADOR = ?";
+        
+        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
+        sentencia.setString(1, desarrollador.getNombreDesarrollador());
+        sentencia.setString(2, desarrollador.getEmailDesarrollador());
+        sentencia.setString(3, desarrollador.getUbicacion());
+        sentencia.setInt(4, desarrollador.getIdDesarrollador());
+        sentencia.executeUpdate();
+    }
 }
