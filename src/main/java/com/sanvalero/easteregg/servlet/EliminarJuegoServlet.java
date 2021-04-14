@@ -25,7 +25,7 @@ public class EliminarJuegoServlet extends HttpServlet {
         
         try {
             juegoDAO.eliminarJuego(idJuego);
-            response.sendRedirect("juegos?message=Juego eliminado");
+            response.sendRedirect("juegos.jsp?message=Juego eliminado");
         } catch (SQLException sqle) {
             Logger.getLogger(EliminarJuegoServlet.class.getName()).log(Level.SEVERE, null, sqle);
         }
