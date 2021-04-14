@@ -95,6 +95,7 @@ public class DesarrolladorDAO {
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
         
         sentencia.setInt(1, idDesarrollador);
+        sentencia.executeUpdate();
     }
     
     public void registrarDesarrollador(Desarrollador desarrollador) throws SQLException {
