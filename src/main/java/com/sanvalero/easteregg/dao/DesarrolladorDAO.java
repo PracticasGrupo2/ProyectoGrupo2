@@ -80,7 +80,8 @@ public class DesarrolladorDAO {
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
         
         sentencia.setInt(1, idDesarrollador);
-
+    }
+    
     public void registrarDesarrollador(Desarrollador desarrollador) throws SQLException {
         
         String consulta = "INSERT INTO DESARROLLADORES VALUES(?, ?, ?, ?)";
