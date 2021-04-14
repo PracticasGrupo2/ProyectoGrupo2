@@ -1,6 +1,6 @@
-<%@page import="com.sanvalero.easteregg.domain.Desarrollador"%>
-<%@page import="com.sanvalero.easteregg.dao.DesarrolladorDAO"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.sanvalero.easteregg.domain.Juego"%>
+<%@page import="com.sanvalero.easteregg.dao.JuegoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,28 +19,28 @@
           <a href="juegos">Ver lista</a>
           <a href="#">Detalle</a>
           <a href="#">Borrar</a>
-          <a href="myform.jsp">Registrar</a>         
+          <a href="registrarJuego.jsp">Registrar</a>         
         </div>
 
         <!-- Page content -->
         <div class="bodyM">    
-        
-        <h1>Lista de desarrolladores (con JSP)</h1>
         <%
-            DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
-            ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.getDesarrolladores();
+            String nombre = request.getParameter("nombre");
+            String email = request.getParameter("email");
+            String pais = request.getParameter("pais");
         %>
-        <ul>
-        <%
-            for (Desarrollador desarrollador : desarrolladores) {
-        %>
-        <li><a href="detalles-desarrollador.jsp?nombre=<%= desarrollador.getNombreDesarrollador()%>&email=<%= desarrollador.getEmailDesarrollador()%>&pais=<%= desarrollador.getUbicacion()%>"><%= desarrollador.getNombreDesarrollador()%></a>
-            <a href="modificarDesarrollador.jsp?id=<%= desarrollador.getIdDesarrollador()%>&nombre=<%=desarrollador.getNombreDesarrollador()%>&email=<%=desarrollador.getEmailDesarrollador()%>&ubicacion=<%=desarrollador.getUbicacion()%>">Modificar</a></li><a href="eliminar-desarrollador?id=<%= desarrollador.getIdDesarrollador()%>">Eliminar</a></li>
-        <%    
-            }
-        %>
-        </ul>
+        <h1>
+            <%= nombre%>
+        </h1>
         
+        <h3>Email: 
+            <%= email%>
+        </h3>
+        
+        <h3>Ubicación:  
+            <%= pais%>
+        </h3>
+
         <%
             // Muestra el mensaje (si lo hay)
             String message = request.getParameter("message");
