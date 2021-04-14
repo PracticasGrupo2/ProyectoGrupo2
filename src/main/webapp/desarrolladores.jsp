@@ -35,11 +35,7 @@
             for (Desarrollador desarrollador : desarrolladores) {
         %>
         <li><%= desarrollador.getNombreDesarrollador()%>
-            <a href="modificarDesarrollador.jsp?id=<%= desarrollador.getIdDesarrollador()%>
-               &desarrollador=<%=desarrollador.getNombreDesarrollador()%>
-               &email=<%=desarrollador.getEmailDesarrollador()%>
-               &pais=<%=desarrollador.getUbicacion()%>">Modificar</a></li>
-            <a href="eliminar-desarrollador?id=<%= desarrollador.getIdDesarrollador()%>">Eliminar</a></li>
+            <a href="modificarDesarrollador.jsp?id=<%= desarrollador.getIdDesarrollador()%>&nombre=<%=desarrollador.getNombreDesarrollador()%>&email=<%=desarrollador.getEmailDesarrollador()%>&ubicacion=<%=desarrollador.getUbicacion()%>">Modificar</a></li><a href="eliminar-desarrollador?id=<%= desarrollador.getIdDesarrollador()%>">Eliminar</a></li>
         <%    
             }
         %>
