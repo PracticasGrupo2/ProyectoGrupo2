@@ -1,6 +1,3 @@
-<%@page import="com.sanvalero.easteregg.dao.GeneroDAO"%>
-<%@page import="com.sanvalero.easteregg.domain.Desarrollador"%>
-<%@page import="com.sanvalero.easteregg.dao.DesarrolladorDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sanvalero.easteregg.domain.Juego"%>
 <%@page import="com.sanvalero.easteregg.dao.JuegoDAO"%>
@@ -27,29 +24,28 @@
 
         <!-- Page content -->
         <div class="bodyM">    
-        
-        <h1>Lista de juegos (con JSP)</h1>
         <%
-            JuegoDAO juegoDAO = new JuegoDAO();
-            ArrayList<Juego> juegos = juegoDAO.getJuegos();
-            
-            DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
-            GeneroDAO generoDAO = new GeneroDAO();
+            String titulo = request.getParameter("titulo");
+            String descripcion = request.getParameter("descripcion");
+            String desarrollador = request.getParameter("desarrollador");
+            String genero = request.getParameter("genero");
         %>
-        <ul>
-        <%
-            for (Juego juego : juegos) {
-                String desarrollador = desarrolladorDAO.getNombreDesarrollador(juego.getIdJuego());
-                String genero = generoDAO.getNombreGenero(juego.getIdJuego());
-        %>
-        <li><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a><br>
-            <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modificar</a><br>
-            <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
-        <%    
-            }
-        %>
-        </ul>
+        <h1>
+            <%=titulo%>
+        </h1>
         
+        <h3>Desarrollador: 
+            <%=desarrollador%>
+        </h3>
+        
+        <h3>Género: 
+            <%=genero%>
+        </h3>
+        
+        <p>
+            <%=descripcion%>
+        </p>
+
         <%
             // Muestra el mensaje (si lo hay)
             String message = request.getParameter("message");

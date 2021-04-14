@@ -24,4 +24,19 @@ public class GeneroDAO {
         
         return idGenero;
     }
+    
+    public String getNombreGenero(int idJuego) throws SQLException {
+        
+        String consulta = "SELECT GE.NOMBRE_GENERO FROM GENEROS GE INNER JOIN JUEGOS JU "
+                + "ON GE.ID_GENERO = JU.ID_GENERO WHERE JU.ID_JUEGO = ?";
+        
+        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
+        sentencia.setInt(1, idJuego);
+        ResultSet resultado = sentencia.executeQuery();
+        resultado.next();
+        
+        String nombreGenero = resultado.getString(1);
+        
+        return nombreGenero;
+    }
 }
