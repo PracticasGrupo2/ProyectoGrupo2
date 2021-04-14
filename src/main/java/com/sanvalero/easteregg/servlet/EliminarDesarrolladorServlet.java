@@ -1,6 +1,6 @@
 package com.sanvalero.easteregg.servlet;
 
-import com.sanvalero.easteregg.dao.JuegoDAO;
+import com.sanvalero.easteregg.dao.DesarrolladorDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -12,22 +12,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet que elimina una película a la base de datos
+ * Servlet que elimina una desarrolladora a la base de datos
  */
-@WebServlet(name = "eliminar-juegos", urlPatterns = {"/eliminar-juegos"})
-public class EliminarJuegoServlet extends HttpServlet {
+@WebServlet(name = "eliminar-desarrollador", urlPatterns = {"/eliminar-desarrollador"})
+public class EliminarDesarrolladorServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         
-        int idJuego = Integer.parseInt(request.getParameter("id"));
-        JuegoDAO juegoDAO = new JuegoDAO();
+        int idDesarrollador = Integer.parseInt(request.getParameter("id"));
+        DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
         
         try {
-            juegoDAO.eliminarJuego(idJuego);
-            response.sendRedirect("juegos.jsp?message=Juego eliminado");
+            desarrolladorDAO.eliminarDesarrollador(idDesarrollador);
+            response.sendRedirect("desarrolladores.jsp?message=Desarrollador eliminado");
         } catch (SQLException sqle) {
-            Logger.getLogger(EliminarJuegoServlet.class.getName()).log(Level.SEVERE, null, sqle);
+            Logger.getLogger(EliminarDesarrolladorServlet.class.getName()).log(Level.SEVERE, null, sqle);
         }
     }
     

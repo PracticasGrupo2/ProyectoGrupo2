@@ -1,3 +1,6 @@
+<%@page import="com.sanvalero.easteregg.dao.GeneroDAO"%>
+<%@page import="com.sanvalero.easteregg.domain.Desarrollador"%>
+<%@page import="com.sanvalero.easteregg.dao.DesarrolladorDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sanvalero.easteregg.domain.Juego"%>
 <%@page import="com.sanvalero.easteregg.dao.JuegoDAO"%>
@@ -17,6 +20,7 @@
         <div class="navIzq">
           <a href="">OPCIONES</a>
           <br>
+
           <a href="buscarJuego.jsp">Buscar</a> 
           <a href="juegos.jsp">Ver Juegos</a>
           <a href="desarrolladores.jsp">Ver Desarrolladores</a>
@@ -37,7 +41,10 @@
                 <%
                     for (Juego juego : juegos) {
                 %>
-                <li><div id="tG" ><%= juego.getTituloJuego()%></div> <a  href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>"><br>Modificar</a>  <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
+                <li><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div><br>
+                <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modificar</a><br>
+                <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
+                
                 <%    
                     }
                 %>                  
@@ -54,7 +61,5 @@
                 %>               
             </div>
         </section>
-            
-       
     </body>
 </html>

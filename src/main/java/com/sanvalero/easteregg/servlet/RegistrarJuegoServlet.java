@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet que añade una película a la base de datos
+ * Servlet que añade un juego a la base de datos
  */
 @WebServlet(name = "registrar-juego", urlPatterns = {"/registrar-juego"})
 public class RegistrarJuegoServlet extends HttpServlet {
@@ -50,7 +50,7 @@ public class RegistrarJuegoServlet extends HttpServlet {
         }
         
         try {
-            idJuego = juegoDAO.getIdNew();
+            idJuego = juegoDAO.getNewId();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarJuegoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -61,9 +61,9 @@ public class RegistrarJuegoServlet extends HttpServlet {
             juegoDAO.registrarJuego(juego);
             
             PrintWriter out = response.getWriter();
-            response.sendRedirect("myform.jsp?status=ok");
+            response.sendRedirect("registrarJuego.jsp?status=ok");
         } catch (SQLException sqle) {
-            response.sendRedirect("myform.jsp?status=error");
+            response.sendRedirect("registrarJuego.jsp?status=error");
             sqle.printStackTrace();
         }
     }

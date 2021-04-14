@@ -7,12 +7,17 @@ public class Desarrollador {
     private String emailDesarrollador;
     private String ubicacion;
 
+    public Desarrollador() {
+    }
+
     public Desarrollador(int idDesarrollador, String nombreDesarrollador, String emailDesarrollador, String ubicacion) {
         this.idDesarrollador = idDesarrollador;
         this.nombreDesarrollador = nombreDesarrollador;
         this.emailDesarrollador = emailDesarrollador;
         this.ubicacion = ubicacion;
     }
+    
+    
 
     public int getIdDesarrollador() {
         return idDesarrollador;
