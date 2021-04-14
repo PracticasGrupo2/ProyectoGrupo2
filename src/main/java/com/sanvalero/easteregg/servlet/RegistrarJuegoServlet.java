@@ -61,9 +61,9 @@ public class RegistrarJuegoServlet extends HttpServlet {
             juegoDAO.registrarJuego(juego);
             
             PrintWriter out = response.getWriter();
-            response.sendRedirect("registrarDesarrollador.jsp?status=ok");
+            response.sendRedirect("registrarJuego.jsp?status=ok");
         } catch (SQLException sqle) {
-            response.sendRedirect("registrarDesarrollador.jsp?status=error");
+            response.sendRedirect("registrarJuego.jsp?status=error");
             sqle.printStackTrace();
         }
     }
