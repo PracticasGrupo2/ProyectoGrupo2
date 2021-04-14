@@ -57,7 +57,7 @@ public class JuegoDAO {
      * @return Una colección con los juegos
      */
     public ArrayList<Juego> getJuegos() throws SQLException {
-        String consulta = "SELECT ID_JUEGO, TITULO, DESCRIPCION FROM JUEGOS";
+        String consulta = "SELECT ID_JUEGO, TITULO, DESCRIPCION FROM JUEGOS ORDER BY TITULO";
 
         ArrayList<Juego> listadoJuegos = new ArrayList<>();
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
