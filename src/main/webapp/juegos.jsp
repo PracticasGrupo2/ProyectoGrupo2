@@ -11,45 +11,50 @@
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <title>Listado de juegos</title>         
     </head>
-    <body>
-                <!-- Side navigation -->
+    <body>               
+        
+             <!-- Side navigation -->
         <div class="navIzq">
-          <a href="#">OPCIONES</a>
+          <a href="">OPCIONES</a>
           <br>
-          <a href="juegos">Ver lista</a>
-          <a href="#">Detalle</a>
-          <a href="#">Borrar</a>
-          <a href="myform.jsp">Registrar</a>         
+          <a href="buscarJuego.jsp">Buscar</a> 
+          <a href="juegos.jsp">Ver Juegos</a>
+          <a href="desarrolladores.jsp">Ver Desarrolladores</a>
+          <a href="registrarJuego.jsp">Registrar Juegos</a>
+          <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a> 
+          <a href="novedades.html">Novedades</a>
         </div>
-
-        <!-- Page content -->
-        <div class="bodyM">    
-        
-        <h1>Lista de juegos (con JSP)</h1>
-        <%
-            JuegoDAO juegoDAO = new JuegoDAO();
-            ArrayList<Juego> juegos = juegoDAO.getJuegos();
-        %>
-        <ul>
-        <%
-            for (Juego juego : juegos) {
-        %>
-        <li><%= juego.getTituloJuego()%> <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modificar</a></li><a href="eliminar-juegos?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
-        <%    
-            }
-        %>
-        </ul>
-        
-        <%
-            // Muestra el mensaje (si lo hay)
-            String message = request.getParameter("message");
-            if (message != null) {
-        %>
-            <p style='color:green'><%= message %></p>
-        <%        
-            }
-        %>
-        
-        </div><!--<!-- fin class="main" -->
+        <section>
+            <div class="listaJ" id="lj">
+                <div class="lineblack"></div>
+                <h1 id="h1L">Lista de juegos (con JSP)</h1>
+                <div class="lineblack"></div>
+                <%
+                    JuegoDAO juegoDAO = new JuegoDAO();
+                    ArrayList<Juego> juegos = juegoDAO.getJuegos();
+                %>
+                <ul>
+                <%
+                    for (Juego juego : juegos) {
+                %>
+                <li><div id="tG" ><%= juego.getTituloJuego()%></div> <a  href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>"><br>Modificar</a>  <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
+                <%    
+                    }
+                %>                  
+                </ul>
+                
+                <%
+                    // Muestra el mensaje (si lo hay)
+                    String message = request.getParameter("message");
+                    if (message != null) {
+                %>
+                    <p style='color:green'><%= message %></p>
+                <%        
+                    }
+                %>               
+            </div>
+        </section>
+            
+       
     </body>
 </html>
