@@ -21,11 +21,17 @@ public class EliminarJuegoServlet extends HttpServlet {
             ServletException, IOException {
 
         int idJuego = Integer.parseInt(request.getParameter("id"));
+        String redireccion = request.getParameter("url");
+        
         JuegoDAO juegoDAO = new JuegoDAO();
 
         try {
             juegoDAO.eliminarJuego(idJuego);
-            response.sendRedirect("juegos.jsp?message=Juego eliminado");
+            if (redireccion.length() == 2){
+                response.sendRedirect("busqueda.jsp?message=Juego eliminado");
+            } else {
+                response.sendRedirect("juegos.jsp?message=Juego eliminado");
+            }
         } catch (SQLException sqle) {
             Logger.getLogger(EliminarJuegoServlet.class.getName()).log(Level.SEVERE, null, sqle);
         }
