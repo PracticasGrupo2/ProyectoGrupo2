@@ -139,7 +139,7 @@ public class JuegoDAO {
      */
     public ArrayList<Juego> buscarJuego(String tituloJuego) throws SQLException {
 
-        String consulta = "SELECT TITULO FROM JUEGOS WHERE UPPER(TITULO) LIKE  UPPER('%" + tituloJuego + "%')";
+        String consulta = "SELECT ID_JUEGO, TITULO, DESCRIPCION FROM JUEGOS WHERE UPPER(TITULO) LIKE  UPPER('%" + tituloJuego + "%')";
         
         ArrayList<Juego> listadoJuegos = new ArrayList<>();
 
@@ -148,7 +148,9 @@ public class JuegoDAO {
 
         while (resultado.next()) {
             Juego juego = new Juego();
-            juego.setTituloJuego(resultado.getString(1));
+            juego.setIdJuego(resultado.getInt(1));
+            juego.setTituloJuego(resultado.getString(2));
+            juego.setDescripcionJuego(resultado.getString(3));
             listadoJuegos.add(juego);
         }
         return listadoJuegos;

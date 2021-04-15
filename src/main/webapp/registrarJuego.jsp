@@ -57,7 +57,12 @@
                     Desarrollador:
                     <input type="text" name="desarrollador" id="black"/><br/>
                     Género:
-                    <input type="text" name="genero" id="black"/><br/>                    
+
+                    <input type="text" name="genero" id="black"/><br/>
+                    Subir imagen:
+                    <input type="file" name="file" accept="image/png, .jpeg, .jpg, image/gif"
+                           style="color: transparent; background: transparent; padding-bottom: 20px"/><br/>
+
                     <input type="submit" value="Registrar" class="btn"/>
                     <br>
                     <div id="result"></div> 

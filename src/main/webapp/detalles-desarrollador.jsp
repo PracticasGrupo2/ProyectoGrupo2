@@ -48,6 +48,7 @@
             <h3>Email: <%= email%></h3>
 
             <h3>Ubicación:  <%= pais%></h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11923.607449786583!2d-0.8655470877441416!3d41.65786232505719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1618509374361!5m2!1ses!2ses" bottom="0" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             <%
                 // Muestra el mensaje (si lo hay)
                 String message = request.getParameter("message");

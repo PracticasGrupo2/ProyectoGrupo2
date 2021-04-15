@@ -36,6 +36,7 @@
             </div>
         </div>
         <!-- Contenido de la pagina -->  
+
         <div class="bodyM">  
             <div class="lineblack"></div>
                 <h1 id="tit">Lista de desarrolladores (con JSP)</h1>
@@ -51,6 +52,7 @@
                     <li id="put1"><img src="images/des3.jpg" alt="alt" /><img src="images/des10.jpg" alt="alt" /></li>
                 </ul> 
                        
+
         <%
             DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
             ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.getDesarrolladores();
