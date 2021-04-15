@@ -48,6 +48,7 @@
                     
                     DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
                     GeneroDAO generoDAO = new GeneroDAO();
+                    String message = request.getParameter("message");
                 %>
                 <ul>
                 <%
@@ -60,11 +61,13 @@
                 <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>&url=ok">Eliminar</a></li>
                 <%    
                     }
-                %>
+
+                    if (juegos.isEmpty() & message == null) {%>
+                <p style="padding-top: 40px; font-size: 20px; color: #ffcc00">No se han encontrado coincidencias.</p>  
+                    <%}%>
                 </ul>
             <%
                 // Muestra el mensaje (si lo hay)
-                String message = request.getParameter("message");
                 if (message != null) {
             %>
                 <p style='color:green'><%= message %></p>
