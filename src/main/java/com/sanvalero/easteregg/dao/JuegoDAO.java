@@ -77,27 +77,63 @@ public class JuegoDAO {
     }
 
     /**
-     * Obtiene una lista de juegos a partir del id del juego
+     * Obtiene la lista de juegos de la base de datos ordenados por titulo
      *
-     * @param idJuego
-     * @return Devuelve una colección de juegos por id
+     * @return Una colección de juegos
      * @throws SQLException
      */
-    public ArrayList<Juego> getJuego(int idJuego) throws SQLException {
-        String consulta = "SELECT TITULO, DESCRIPCION FROM JUEGOS WHERE ID_JUEGO = ?";
+    public ArrayList<Juego> getJuegosPaginar(int min, int max) throws SQLException {
+        String consulta = "SELECT * FROM (SELECT Q.*,ROWNUM RO FROM (SELECT ID_JUEGO, TITULO, DESCRIPCION FROM JUEGOS ORDER BY ID_JUEGO)Q WHERE ROWNUM <="+max+") WHERE RO >="+min;
 
-        ArrayList<Juego> datosJuego = new ArrayList<>();
+        ArrayList<Juego> listadoJuegos = new ArrayList<>();
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
-        sentencia.setInt(1, idJuego);
         ResultSet resultado = sentencia.executeQuery();
 
         while (resultado.next()) {
             Juego juego = new Juego();
-            juego.setTituloJuego(resultado.getString(1));
-            juego.setDescripcionJuego(resultado.getString(2));
-            datosJuego.add(juego);
+            juego.setIdJuego(resultado.getInt(1));
+            juego.setTituloJuego(resultado.getString(2));
+            juego.setDescripcionJuego(resultado.getString(3));
+            listadoJuegos.add(juego);
+
         }
-        return datosJuego;
+        return listadoJuegos;
+
+    }
+    
+    /**
+     * Obtiene la lista de juegos de la base de datos ordenados por titulo
+     * @param max numero de juego maximo
+     * @param min numero de juego minimo
+     * @return Una colección de juegos
+     * @throws SQLException
+     */
+    public ArrayList<Juego> getJuegosPaginar(int min, int max) throws SQLException {
+        String consulta = "SELECT * FROM (SELECT Q.*,ROWNUM RO FROM (SELECT ID_JUEGO, TITULO, DESCRIPCION FROM JUEGOS ORDER BY ID_JUEGO)Q WHERE ROWNUM <="+max+") WHERE RO >="+min;
+
+        ArrayList<Juego> listadoJuegos = new ArrayList<>();
+        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
+        ResultSet resultado = sentencia.executeQuery();
+
+        while (resultado.next()) {
+            Juego juego = new Juego();
+            juego.setIdJuego(resultado.getInt(1));
+            juego.setTituloJuego(resultado.getString(2));
+            juego.setDescripcionJuego(resultado.getString(3));
+            listadoJuegos.add(juego);
+
+        }
+        return listadoJuegos;
+    }
+    /**
+     * Obtiene una lista de juegos a partir del id del juego
+     *
+     * @param num
+     * @return Devuelve una colección de juegos por id
+     * @throws SQLException
+     */
+    public ArrayList<Juego> irPagina(int num) throws SQLException {
+        return getJuegosPaginar(num * 6 + 1, (num + 1) * 6);
     }
 
     /**

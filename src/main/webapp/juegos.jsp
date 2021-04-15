@@ -22,7 +22,7 @@
           <a id="esp" href="#">OPCIONES</a>
           <br>
           <a href="buscarJuego.jsp">Buscar</a> 
-          <a href="juegos.jsp">Ver Juegos</a>
+          <a href="juegos.jsp?page=0">Ver Juegos</a>
           <a href="desarrolladores.jsp">Ver Desarrolladores</a>
           <a href="registrarJuego.jsp">Registrar Juegos</a>
           <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a>  
@@ -44,7 +44,8 @@
                 <div class="lineblack"></div>
                 <%
                     JuegoDAO juegoDAO = new JuegoDAO();
-                    ArrayList<Juego> juegos = juegoDAO.getJuegos();
+                    int pagina = (Integer.parseInt(request.getParameter("page")))|0;
+                    ArrayList<Juego> juegos = juegoDAO.irPagina(pagina);
                     
                     DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
                     GeneroDAO generoDAO = new GeneroDAO();
@@ -63,7 +64,13 @@
                     }
                 %>                  
                 </ul>
-                
+                <a href="/easteregg/juegos.jsp?page=<%=pagina-1%>">
+                Anterior
+                </a>
+
+                <a href="/easteregg/juegos.jsp?page=<%=pagina+1%>">
+                Siguiente
+                </a>
                 <%
                     // Muestra el mensaje (si lo hay)
                     String message = request.getParameter("message");
