@@ -19,7 +19,7 @@
         
              <!-- Side navigation -->
         <div class="navIzq">
-            <a id="esp" href="">OPCIONES</a>
+            <a id="esp" href="#">OPCIONES</a>
           <br>
           <a href="buscarJuego.jsp">Buscar</a> 
           <a href="juegos.jsp">Ver Juegos</a>
