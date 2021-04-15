@@ -57,6 +57,9 @@
                     <input type="text" name="titulo" value="<%=titulo%>" id="black"/><br/>
                     Descripción:
                     <input type="text" name="descripcion" size = "200" value="<%=descripcion%>" id="black"/><br/>
+                    Nueva imagen:
+                    <input type="file" name="file" accept="image/png, .jpeg, .jpg, image/gif"
+                           style="color: transparent; background: transparent"/><br/>
                     <input type="hidden" name="id" value="<%=id%>" id="black"/><br/>
                     <input type="submit" value="Modificar" class="btn"/>
                     <div id="result"></div>

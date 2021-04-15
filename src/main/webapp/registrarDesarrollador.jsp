@@ -18,7 +18,7 @@
                     var formValues= $(this).serialize();
                     
                     $.post("registrar-desarrollador", formValues, function(data){
-                        $("#solu").html(data);
+                        $("#result").html(data);
                     });
                 });
             });
@@ -55,9 +55,12 @@
                     Email:
                     <input type="text" name="email" id="black"/><br/>
                     País:
-                    <input type="text" name="pais" id="black"/><br/>                   
+                    <input type="text" name="pais" id="black"/><br/>
+                    Subir logotipo:
+                    <input type="file" name="file" accept="image/png, .jpeg, .jpg, image/gif"
+                           style="color: transparent; background: transparent; padding-bottom: 20px"/><br/>
                     <input type="submit" value="Registrar" class="btn"/>
-                    <div id="solu"></div>
+                    <div id="result"></div>
                 </form>
             </div>
         </div>
