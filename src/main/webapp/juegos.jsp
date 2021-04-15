@@ -31,7 +31,7 @@
         <div class="bodyM">
             <div class="listaJ" id="lj">
                 <div class="lineblack"></div>
-                <h1 id="h1L">Lista de juegos (con JSP)</h1>
+                <h1 id="h1L">Lista de juegos</h1>
                 <div class="lineblack"></div>
                 <%
                     JuegoDAO juegoDAO = new JuegoDAO();
@@ -48,7 +48,7 @@
                 %>
                 <li><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div>
                 <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modificar</a><br>
-                <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
+                <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>&url=b">Eliminar</a></li>
                 
                 <%    
                     }

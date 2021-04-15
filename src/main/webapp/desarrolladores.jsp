@@ -31,7 +31,7 @@
             <div class="listaJ" id="lj">
                 
                 <div class="lineblack"></div>
-                <h1 id="h1L">Lista de desarrolladores (con JSP)</h1>
+                <h1 id="h1L">Lista de desarrolladores</h1>
                 <div class="lineblack"></div>
         
         <%

@@ -35,19 +35,6 @@
                     <input type="submit" value="Buscar" class="btn"/>
                 </form>
             </div>   
-        
-        <%
-            String status = request.getParameter("status");
-            if (status == null)
-                status = "";
-                
-            if (status.equals("ok")) {
-                out.println("<p style='color:green'>La desarrolladora se ha modificado con éxito</p>");
-            } else if (status.equals("error")) {
-                out.println("<p style='color:red'>No se ha podido modificar la desarrolladora</p>");
-            }
-        %>
         </div>
-        
     </body>
 </html>
