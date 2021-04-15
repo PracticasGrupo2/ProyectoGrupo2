@@ -75,31 +75,6 @@ public class JuegoDAO {
         return listadoJuegos;
 
     }
-
-    /**
-     * Obtiene la lista de juegos de la base de datos ordenados por titulo
-     *
-     * @return Una colección de juegos
-     * @throws SQLException
-     */
-    public ArrayList<Juego> getJuegosPaginar(int min, int max) throws SQLException {
-        String consulta = "SELECT * FROM (SELECT Q.*,ROWNUM RO FROM (SELECT ID_JUEGO, TITULO, DESCRIPCION FROM JUEGOS ORDER BY ID_JUEGO)Q WHERE ROWNUM <="+max+") WHERE RO >="+min;
-
-        ArrayList<Juego> listadoJuegos = new ArrayList<>();
-        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
-        ResultSet resultado = sentencia.executeQuery();
-
-        while (resultado.next()) {
-            Juego juego = new Juego();
-            juego.setIdJuego(resultado.getInt(1));
-            juego.setTituloJuego(resultado.getString(2));
-            juego.setDescripcionJuego(resultado.getString(3));
-            listadoJuegos.add(juego);
-
-        }
-        return listadoJuegos;
-
-    }
     
     /**
      * Obtiene la lista de juegos de la base de datos ordenados por titulo
