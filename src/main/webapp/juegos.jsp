@@ -38,10 +38,20 @@
         </div>
         <!-- Contenido de la pagina -->  
         <div class="bodyM">
+            <div class="lineblack"></div>
+                <h1 id="tit">Lista de juegos (con JSP)</h1>
+                <div class="lineblack"></div>
+            
             <div class="listaJ" id="lj">
-                <div class="lineblack"></div>
-                <h1 id="h1L">Lista de juegos (con JSP)</h1>
-                <div class="lineblack"></div>
+                <ul id="put0">
+                    <li id="put1"><img src="images/img6.jpg" alt="alt" /><img src="images/img3.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/img4.jpg" alt="alt" /><img src="images/img5.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/img7.jpg" alt="alt" /><img src="images/img8.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/img9.jpg" alt="alt" /><img src="images/img10.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/img11.jpg" alt="alt" /><img src="images/img12.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/img13.jpg" alt="alt" /><img src="images/img14.jpg" alt="alt" /></li>
+                </ul>    
+                
                 <%
                     JuegoDAO juegoDAO = new JuegoDAO();
                     ArrayList<Juego> juegos = juegoDAO.getJuegos();
@@ -49,19 +59,22 @@
                     DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
                     GeneroDAO generoDAO = new GeneroDAO();
                 %>
-                <ul id="put0">
+                <ul id="put0">                    
                 <%
                     for (Juego juego : juegos) {
                         String desarrollador = desarrolladorDAO.getNombreDesarrollador(juego.getIdJuego());
                         String genero = generoDAO.getNombreGenero(juego.getIdJuego());
                 %>
-                <li><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div>
+                <li id="put1"><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div>
                 <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modificar</a><br>
                 <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
-                
+               
+                <br>
+                <div class="lineblack"></div>
+                <br>
                 <%    
                     }
-                %>                  
+                %>                     
                 </ul>
                 
                 <%
@@ -72,7 +85,15 @@
                     <p style='color:green'><%= message %></p>
                 <%        
                     }
-                %>               
+                %>  
+                <ul id="put0">
+                    <li id="put1"><img src="images/img6.jpg" alt="alt" /><img src="images/img3.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/img4.jpg" alt="alt" /><img src="images/img5.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/img7.jpg" alt="alt" /><img src="images/img8.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/img9.jpg" alt="alt" /><img src="images/img10.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/img11.jpg" alt="alt" /><img src="images/img12.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/img13.jpg" alt="alt" /><img src="images/img14.jpg" alt="alt" /></li>
+                </ul> 
             </div>            
         </div>
     </body>

@@ -26,7 +26,7 @@
     </head>
     <body>       
         <!-- menu -->
-        <div class="navIzq">
+        <div class="navIzq">           
           <a id="esp" href="#">OPCIONES</a>
           <br>
           <a href="buscarJuego.jsp">Buscar</a> 
@@ -45,7 +45,7 @@
             </div>
         </div>
         <!-- Contenido de la pagina -->         
-        <div class="bodyM">
+        <div class="bodyM">  
             <div class="d1"> 
                 <form class="container">
                     <h1>Registrar un juego</h1>
@@ -57,7 +57,7 @@
                     Desarrollador:
                     <input type="text" name="desarrollador" id="black"/><br/>
                     Género:
-                    <input type="text" name="genero" id="black"/><br/>
+                    <input type="text" name="genero" id="black"/><br/>                    
                     <input type="submit" value="Registrar" class="btn"/>
                     <br>
                     <div id="result"></div> 

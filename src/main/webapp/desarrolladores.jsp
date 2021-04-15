@@ -36,11 +36,21 @@
             </div>
         </div>
         <!-- Contenido de la pagina -->  
-        <div class="bodyM">           
-            <div class="listaJ" id="lj">               
-                <div class="lineblack"></div>
-                <h1 id="h1L">Lista de desarrolladores (con JSP)</h1>
-                <div class="lineblack"></div>        
+        <div class="bodyM">  
+            <div class="lineblack"></div>
+                <h1 id="tit">Lista de desarrolladores (con JSP)</h1>
+                <div class="lineblack"></div> 
+                
+            <div class="listaJ" id="lj">   
+                <ul id="put0">
+                    <li id="put1"><img src="images/des1.jpg" alt="alt" /><img src="images/des2.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/des3.jpg" alt="alt" /><img src="images/des4.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/des5.jpg" alt="alt" /><img src="images/des6.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/des7.jpg" alt="alt" /><img src="images/des8.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/des9.jpg" alt="alt" /><img src="images/des1.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/des3.jpg" alt="alt" /><img src="images/des10.jpg" alt="alt" /></li>
+                </ul> 
+                       
         <%
             DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
             ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.getDesarrolladores();
@@ -49,8 +59,11 @@
         <%
             for (Desarrollador desarrollador : desarrolladores) {
         %>
-        <li><div id="tG" ><a href="detalles-desarrollador.jsp?nombre=<%= desarrollador.getNombreDesarrollador()%>&email=<%= desarrollador.getEmailDesarrollador()%>&pais=<%= desarrollador.getUbicacion()%>"><%= desarrollador.getNombreDesarrollador()%></a></div>
+        <li id="put1" ><div id="tG" ><a href="detalles-desarrollador.jsp?nombre=<%= desarrollador.getNombreDesarrollador()%>&email=<%= desarrollador.getEmailDesarrollador()%>&pais=<%= desarrollador.getUbicacion()%>"><%= desarrollador.getNombreDesarrollador()%></a></div>
             <a href="modificarDesarrollador.jsp?id=<%= desarrollador.getIdDesarrollador()%>&nombre=<%=desarrollador.getNombreDesarrollador()%>&email=<%=desarrollador.getEmailDesarrollador()%>&ubicacion=<%=desarrollador.getUbicacion()%>">Modificar</a></li><a href="eliminar-desarrollador?id=<%= desarrollador.getIdDesarrollador()%>">Eliminar</a></li>
+        <br><br>
+                <div class="lineblack"></div>
+                <br>
         <%    
             }
         %>
@@ -64,6 +77,14 @@
         <%        
             }
         %>
+        <ul id="put0">
+                    <li id="put1"><img src="images/des1.jpg" alt="alt" /><img src="images/des2.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/des3.jpg" alt="alt" /><img src="images/des4.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/des5.jpg" alt="alt" /><img src="images/des6.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/des7.jpg" alt="alt" /><img src="images/des8.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/des9.jpg" alt="alt" /><img src="images/des1.jpg" alt="alt" /></li>
+                    <li id="put1"><img src="images/des3.jpg" alt="alt" /><img src="images/des10.jpg" alt="alt" /></li>
+                </ul> 
             </div>        
         </div><!--<!-- fin class="bodyM" -->
     </body>
