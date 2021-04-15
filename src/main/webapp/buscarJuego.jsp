@@ -19,7 +19,7 @@
           <a id="esp" href="#">OPCIONES</a>
           <br>
           <a href="buscarJuego.jsp">Buscar</a> 
-          <a href="juegos.jsp">Ver Juegos</a>
+          <a href="juegos.jsp?page=0">Ver Juegos</a>
           <a href="desarrolladores.jsp">Ver Desarrolladores</a>
           <a href="registrarJuego.jsp">Registrar Juegos</a>
           <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a>  
