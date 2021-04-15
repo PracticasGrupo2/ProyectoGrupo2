@@ -9,6 +9,20 @@
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <link rel="icon" type="image/png" href="images/moneda.gif" /><!--enlace para icono de la pestaña-->
         <title>Registrar juego</title> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("form").on("submit", function(event) {
+                    event.preventDefault();
+                    
+                    var formValues= $(this).serialize();
+                    
+                    $.post("registrar-juego", formValues, function(data){
+                        $("#result").html(data);
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
         
@@ -26,7 +40,7 @@
         <div class="bodyM">
             <div class="d1">
             
-            <form method="post" action="registrar-juego" class="container">
+            <form class="container">
                 <h1>Registrar un juego</h1>
                 <br><br>
                 Título:
@@ -38,20 +52,12 @@
                 Género:
                 <input type="text" name="genero"/><br/>
                 <input type="submit" value="Registrar" class="btn"/>
+                <br>
+                <div id="result"></div> 
             </form>
-            </div>
-        
-        <%
-            String status = request.getParameter("status");
-            if (status == null)
-                status = "";
-                
-            if (status.equals("ok")) {
-                out.println("<p style='color:green'>El juego se ha registrado con éxito</p>");
-            } else if (status.equals("error")) {
-                out.println("<p style='color:red'>No se ha podido registrar el juego</p>");
-            }
-        %>
+            </div>                
         </div>
     </body>
 </html>
+
+

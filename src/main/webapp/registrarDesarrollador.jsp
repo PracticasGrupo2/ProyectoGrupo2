@@ -9,6 +9,20 @@
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <link rel="icon" type="image/png" href="images/moneda.gif" /><!--enlace para icono de la pestaña-->
         <title>Registrar desarrollador</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("form").on("submit", function(event) {
+                    event.preventDefault();
+                    
+                    var formValues= $(this).serialize();
+                    
+                    $.post("registrar-desarrollador", formValues, function(data){
+                        $("#solu").html(data);
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
         
@@ -25,7 +39,7 @@
         
         <div class="bodyM">
             <div class="d1">
-                <form method="post" action="registrar-desarrollador" class="container">
+                <form class="container">
                     <h1>Registrar un desarrrollador</h1>
                     <br><br>
                     Nombre:
@@ -33,22 +47,11 @@
                     Email:
                     <input type="text" name="email"/><br/>
                     País:
-                    <input type="text" name="pais"/><br/>
-
+                    <input type="text" name="pais"/><br/>                   
                     <input type="submit" value="Registrar" class="btn"/>
+                    <div id="solu"></div>
                 </form>
             </div>
-        <%
-            String status = request.getParameter("status");
-            if (status == null)
-                status = "";
-                
-            if (status.equals("ok")) {
-                out.println("<p style='color:green'>El juego se ha registrado con éxito</p>");
-            } else if (status.equals("error")) {
-                out.println("<p style='color:red'>No se ha podido registrar el juego</p>");
-            }
-        %>
         </div>
     </body>
 </html>

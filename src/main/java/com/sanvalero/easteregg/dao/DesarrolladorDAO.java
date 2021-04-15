@@ -51,7 +51,7 @@ public class DesarrolladorDAO {
     
 
     public ArrayList<Desarrollador> getDesarrolladores() throws SQLException {  
-        String consulta = "SELECT ID_DESARROLLADOR, NOMBRE_DESARROLLADOR, EMAIL, PAIS FROM DESARROLLADORES";
+        String consulta = "SELECT ID_DESARROLLADOR, NOMBRE_DESARROLLADOR, EMAIL, PAIS FROM DESARROLLADORES ORDER BY NOMBRE_DESARROLLADOR";
 
         ArrayList<Desarrollador> listadoDesarrolladores = new ArrayList<>();
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);

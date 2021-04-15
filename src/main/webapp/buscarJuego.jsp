@@ -30,7 +30,7 @@
                     <h1>Buscar juego</h1>
                     <br><br>
                     Buscar juego por nombre:
-                    <input type="text" name="nombre" value="Escribe aquí el nombre del juego" id="black"/><br/>
+                    <input type="text" name="nombre" size="40px" placeholder="Escribe aquí el nombre del juego" id="black"/><br/>
 
                     <input type="submit" value="Buscar" class="btn"/>
                 </form>
