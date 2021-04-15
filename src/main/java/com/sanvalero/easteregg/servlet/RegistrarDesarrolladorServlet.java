@@ -41,12 +41,10 @@ public class RegistrarDesarrolladorServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             desarrolladorDAO.registrarDesarrollador(desarrollador);
-
             out.write("Desarrollador registrado con &eacute;xito");
-            //response.sendRedirect("registrarJuego.jsp?status=ok");
+          
         } catch (SQLException sqle) {
             out.write("Este desarrollador no se ha podido registrar");
-            //response.sendRedirect("registrarJuego.jsp?status=error");
             sqle.printStackTrace();
         }
     }

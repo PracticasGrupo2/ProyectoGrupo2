@@ -28,13 +28,14 @@ public class ModificarDesarrolladorServlet extends HttpServlet {
         String ubicacion = request.getParameter("ubicacion");
 
         Desarrollador desarrollador = new Desarrollador(idDesarrollador, nombre, email, ubicacion);
-
+        PrintWriter out = response.getWriter();
+      
         try {
             desarrolladorDAO.modificarDesarrollador(desarrollador);
-            PrintWriter out = response.getWriter();
-            response.sendRedirect("modificarDesarrollador.jsp?status=ok");
+            
+            out.write("Desarrollador modificado con &eacute;xito");
         } catch (SQLException sqle) {
-            response.sendRedirect("modificarDesarrollador.jsp?status=error");
+            out.write("Este desarrollador no se ha podido modificar");
             sqle.printStackTrace();
         }
     }

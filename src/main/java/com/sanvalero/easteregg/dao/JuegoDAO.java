@@ -138,8 +138,9 @@ public class JuegoDAO {
      * @throws SQLException
      */
     public ArrayList<Juego> buscarJuego(String tituloJuego) throws SQLException {
-        String consulta = "SELECT TITULO FROM JUEGOS WHERE TITULO LIKE '%" + tituloJuego + "%'";
 
+        String consulta = "SELECT TITULO FROM JUEGOS WHERE UPPER(TITULO) LIKE  UPPER('%" + tituloJuego + "%')";
+        
         ArrayList<Juego> listadoJuegos = new ArrayList<>();
 
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);

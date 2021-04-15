@@ -27,7 +27,7 @@
     <body>
         
         <div class="navIzq">
-          <a id="esp" href="">OPCIONES</a>
+          <a id="esp" href="#">OPCIONES</a>
           <br>
           <a href="buscarJuego.jsp">Buscar</a> 
           <a href="juegos.jsp">Ver Juegos</a>
@@ -43,11 +43,11 @@
                     <h1>Registrar un desarrrollador</h1>
                     <br><br>
                     Nombre:
-                    <input type="text" name="nombre"/><br/>
+                    <input type="text" name="nombre" id="black"/><br/>
                     Email:
-                    <input type="text" name="email"/><br/>
+                    <input type="text" name="email" id="black"/><br/>
                     País:
-                    <input type="text" name="pais"/><br/>                   
+                    <input type="text" name="pais" id="black"/><br/>                   
                     <input type="submit" value="Registrar" class="btn"/>
                     <div id="solu"></div>
                 </form>
