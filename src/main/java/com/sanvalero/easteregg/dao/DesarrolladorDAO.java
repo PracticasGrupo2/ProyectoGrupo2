@@ -13,51 +13,59 @@ public class DesarrolladorDAO {
     public DesarrolladorDAO() {
         conexion = new Conexion();
     }
-    
+
     /**
-     * Genera automáticamente una id nueva para registrar un juego
-     * @throws SQLException 
+     * Genera automáticamente una id nueva para registrar un desarrollador
+     *
+     * @return Devuelve un incremento del id del desarrollador
+     * @throws SQLException
      */
     public int getNewId() throws SQLException {
-        
+
         String consulta = "SELECT MAX(ID_DESARROLLADOR) FROM DESARROLLADORES";
-        
+
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
         ResultSet resultado = sentencia.executeQuery();
         resultado.next();
         int idDesarrollador = resultado.getInt(1);
-        
+
         return idDesarrollador + 1;
     }
-    
+
     /**
      * Busca la ID del desarrollador buscándolo por nombre
+     *
      * @param desarrollador
      * @return Devuelve la ID del desarrollador de la base de datos
-     * @throws SQLException 
+     * @throws SQLException
      */
     public int getId(String desarrollador) throws SQLException {
-        
+
         String consulta = "SELECT ID_DESARROLLADOR FROM DESARROLLADORES WHERE NOMBRE_DESARROLLADOR = ?";
-        
+
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
         sentencia.setString(1, desarrollador);
         ResultSet resultado = sentencia.executeQuery();
         resultado.next();
         int idDesarrollador = resultado.getInt(1);
-        
+
         return idDesarrollador;
     }
-    
 
-    public ArrayList<Desarrollador> getDesarrolladores() throws SQLException {  
+    /**
+     * Obtiene la lista de desarrolladores de la base de datos
+     *
+     * @return Devuelve una colección con los juegos
+     * @throws SQLException
+     */
+    public ArrayList<Desarrollador> getDesarrolladores() throws SQLException {
         String consulta = "SELECT ID_DESARROLLADOR, NOMBRE_DESARROLLADOR, EMAIL, PAIS FROM DESARROLLADORES ORDER BY NOMBRE_DESARROLLADOR";
 
         ArrayList<Desarrollador> listadoDesarrolladores = new ArrayList<>();
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
         ResultSet resultado = sentencia.executeQuery();
 
-        while(resultado.next()){
+        while (resultado.next()) {
             Desarrollador desarrollador = new Desarrollador();
             desarrollador.setIdDesarrollador(resultado.getInt(1));
             desarrollador.setNombreDesarrollador(resultado.getString(2));
@@ -66,42 +74,55 @@ public class DesarrolladorDAO {
             listadoDesarrolladores.add(desarrollador);
 
         }
-        return listadoDesarrolladores;   
+        return listadoDesarrolladores;
     }
-    
+
+    /**
+     * Obtiene el nombre del desarrollador a partir del id del juego
+     *
+     * @param idJuego
+     * @return Devuelve una colección con los desarrolladores
+     * @throws SQLException
+     */
     public String getNombreDesarrollador(int idJuego) throws SQLException {
         String consulta = "SELECT DE.NOMBRE_DESARROLLADOR FROM DESARROLLADORES DE INNER JOIN JUEGOS JU ON "
                 + "DE.ID_DESARROLLADOR = JU.ID_DESARROLLADOR WHERE JU.ID_JUEGO = ?";
-        
+
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
         sentencia.setInt(1, idJuego);
         ResultSet resultado = sentencia.executeQuery();
-        
+
         resultado.next();
         String desarrollador = resultado.getString(1);
-        
-        
+
         return desarrollador;
     }
-    
-       /**
+
+    /**
      * Elimina un desarrollador
+     *
      * @param idJuego El id del desarrollador a eliminar
+     * @throws SQLException
      */
     public void eliminarDesarrollador(int idDesarrollador) throws SQLException {
-        
-        
+
         String consulta = "DELETE FROM DESARROLLADORES WHERE ID_DESARROLLADOR = ?";
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
-        
+
         sentencia.setInt(1, idDesarrollador);
         sentencia.executeUpdate();
     }
-    
+
+    /**
+     * Registra un desarrollador por nombre
+     *
+     * @param desarrollador
+     * @throws SQLException
+     */
     public void registrarDesarrollador(Desarrollador desarrollador) throws SQLException {
-        
+
         String consulta = "INSERT INTO DESARROLLADORES VALUES(?, ?, ?, ?)";
-        
+
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
         sentencia.setInt(1, desarrollador.getIdDesarrollador());
         sentencia.setString(2, desarrollador.getNombreDesarrollador());
@@ -109,10 +130,16 @@ public class DesarrolladorDAO {
         sentencia.setString(4, desarrollador.getUbicacion());
         sentencia.executeUpdate();
     }
-    
-       public void modificarDesarrollador(Desarrollador desarrollador) throws SQLException {
+
+    /**
+     * Modificar un desarrollador por nombre
+     *
+     * @param desarrollador
+     * @throws SQLException
+     */
+    public void modificarDesarrollador(Desarrollador desarrollador) throws SQLException {
         String consulta = "UPDATE DESARROLLADORES SET NOMBRE_DESARROLLADOR = ?, EMAIL = ?, PAIS = ? WHERE ID_DESARROLLADOR = ?";
-        
+
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
         sentencia.setString(1, desarrollador.getNombreDesarrollador());
         sentencia.setString(2, desarrollador.getEmailDesarrollador());

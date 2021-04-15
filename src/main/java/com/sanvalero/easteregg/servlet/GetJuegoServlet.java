@@ -27,7 +27,7 @@ public class GetJuegoServlet extends HttpServlet {
             ArrayList<Juego> juegos = juegoDAO.getJuegos();
             out.println("<ul>");
             for (Juego juego : juegos) {
-                out.println("<li>" + juego.getTituloJuego()+ " <a href='eliminar-juegos?id=" + juego.getIdJuego()+ "'>Eliminar</a></li>");
+                out.println("<li>" + juego.getTituloJuego() + " <a href='eliminar-juegos?id=" + juego.getIdJuego() + "'>Eliminar</a></li>");
             }
 
             // Muestra el mensaje (si lo hay)
@@ -39,8 +39,7 @@ public class GetJuegoServlet extends HttpServlet {
             sqle.printStackTrace();
         }
     }
-    
-    
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);

@@ -12,17 +12,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet que elimina una película a la base de datos
+ * Servlet que elimina un juego de la base de datos
  */
 @WebServlet(name = "eliminar-juegos", urlPatterns = {"/eliminar-juegos"})
 public class EliminarJuegoServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
-        
+
         int idJuego = Integer.parseInt(request.getParameter("id"));
         JuegoDAO juegoDAO = new JuegoDAO();
-        
+
         try {
             juegoDAO.eliminarJuego(idJuego);
             response.sendRedirect("juegos.jsp?message=Juego eliminado");
@@ -30,7 +30,7 @@ public class EliminarJuegoServlet extends HttpServlet {
             Logger.getLogger(EliminarJuegoServlet.class.getName()).log(Level.SEVERE, null, sqle);
         }
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);

@@ -27,11 +27,8 @@ public class GetDesarrolladorServlet extends HttpServlet {
             ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.getDesarrolladores();
             out.println("<ul>");
             for (Desarrollador desarrollador : desarrolladores) {
-                out.println("<li>" + desarrollador.getNombreDesarrollador()+ " <a href='eliminar-desarrolladores?id=" + desarrollador.getIdDesarrollador()+ "'>Eliminar</a></li>");
+                out.println("<li>" + desarrollador.getNombreDesarrollador() + " <a href='eliminar-desarrolladores?id=" + desarrollador.getIdDesarrollador() + "'>Eliminar</a></li>");
             }
-            // FIXME juego de ejemplo (eliminar cuando se desarrolle el listado)
-            out.println("<li>Juego de ejemplo</li> <a href='eliminar-juego?id=23'>Eliminar</a></li>");
-            out.println("</ul>");
 
             // Muestra el mensaje (si lo hay)
             String message = request.getParameter("message");
@@ -42,8 +39,7 @@ public class GetDesarrolladorServlet extends HttpServlet {
             sqle.printStackTrace();
         }
     }
-    
-    
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
