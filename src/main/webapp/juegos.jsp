@@ -12,15 +12,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Chakra+Petch:wght@300&family=Permanent+Marker&family=Press+Start+2P&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">      
         <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link rel="icon" type="image/png" href="images/moneda.gif" /><!--enlace para icono de la pestaña-->
         <title>Listado de juegos</title>         
     </head>
     <body>               
         
              <!-- Side navigation -->
         <div class="navIzq">
-          <a href="">OPCIONES</a>
+            <a id="esp" href="">OPCIONES</a>
           <br>
-
           <a href="buscarJuego.jsp">Buscar</a> 
           <a href="juegos.jsp">Ver Juegos</a>
           <a href="desarrolladores.jsp">Ver Desarrolladores</a>
@@ -28,7 +28,7 @@
           <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a> 
           <a href="novedades.html">Novedades</a>
         </div>
-        <section>
+        <div class="bodyM">
             <div class="listaJ" id="lj">
                 <div class="lineblack"></div>
                 <h1 id="h1L">Lista de juegos (con JSP)</h1>
@@ -46,7 +46,7 @@
                         String desarrollador = desarrolladorDAO.getNombreDesarrollador(juego.getIdJuego());
                         String genero = generoDAO.getNombreGenero(juego.getIdJuego());
                 %>
-                <li><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div><br>
+                <li><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div>
                 <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modificar</a><br>
                 <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>">Eliminar</a></li>
                 
@@ -64,7 +64,7 @@
                 <%        
                     }
                 %>               
-            </div>
-        </section>
+            </div>            
+        </div>
     </body>
 </html>

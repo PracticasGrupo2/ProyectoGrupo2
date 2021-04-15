@@ -4,18 +4,37 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Buscar juegos</title>
+        <title>Buscar juegos</title>         
+        <link rel="stylesheet" href="css/style.css" type="text/css"><!--<!-- hoja de estilo -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="icon" type="image/png" href="images/moneda.gif" /><!--enlace para icono de la pestaña-->
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Chakra+Petch:wght@300&family=Permanent+Marker&family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--enlace para iconos-->
+        
     </head>
     <body>
-
+        <div class="navIzq">
+          <a id="esp" href="">OPCIONES</a>
+          <br>
+          <a href="buscarJuego.jsp">Buscar</a> 
+          <a href="juegos.jsp">Ver Juegos</a>
+          <a href="desarrolladores.jsp">Ver Desarrolladores</a>
+          <a href="registrarJuego.jsp">Registrar Juegos</a>
+          <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a>  
+          <a href="novedades.html">Novedades</a>
+        </div>
         
-        <h1>Buscar juego</h1>
-        <form method="post" action="busqueda.jsp">
-            Buscar juego por nombre:
-            <input type="text" name="nombre" value="Escribe aquí el nombre del juego"/><br/>
- 
-            <input type="submit" value="Buscar"/>
-        </form>
+        <div class="bodyM">
+            <div class="d1">
+                <form method="post" action="busqueda.jsp" class="container">
+                    <h1>Buscar juego</h1>
+                    <br><br>
+                    Buscar juego por nombre:
+                    <input type="text" name="nombre" value="Escribe aquí el nombre del juego" id="black"/><br/>
+
+                    <input type="submit" value="Buscar" class="btn"/>
+                </form>
+            </div>   
         
         <%
             String status = request.getParameter("status");
@@ -28,5 +47,7 @@
                 out.println("<p style='color:red'>No se ha podido modificar la desarrolladora</p>");
             }
         %>
+        </div>
+        
     </body>
 </html>
