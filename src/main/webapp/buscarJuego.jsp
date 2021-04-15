@@ -12,7 +12,7 @@
         <h1>Buscar juego</h1>
         <form method="post" action="busqueda.jsp">
             Buscar juego por nombre:
-            <input type="text" name="nombre" value="Escribe aquí el nombre del juego"/><br/>
+            <input type="text" name="nombre" size="40px" placeholder="Escribe aquí el nombre del juego"/><br/>
  
             <input type="submit" value="Buscar"/>
         </form>
