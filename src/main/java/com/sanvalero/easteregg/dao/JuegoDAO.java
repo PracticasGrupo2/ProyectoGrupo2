@@ -52,9 +52,10 @@ public class JuegoDAO {
     }
 
     /**
-     * Obtiene la lista de juegos de la base de datos
+     * Obtiene la lista de juegos de la base de datos ordenados por titulo
      *
-     * @return Una colección con los juegos
+     * @return Una colección de juegos
+     * @throws SQLException
      */
     public ArrayList<Juego> getJuegos() throws SQLException {
         String consulta = "SELECT ID_JUEGO, TITULO, DESCRIPCION FROM JUEGOS ORDER BY TITULO";
@@ -75,6 +76,13 @@ public class JuegoDAO {
 
     }
 
+    /**
+     * Obtiene una lista de juegos a partir del id del juego
+     *
+     * @param idJuego
+     * @return Devuelve una colección de juegos por id
+     * @throws SQLException
+     */
     public ArrayList<Juego> getJuego(int idJuego) throws SQLException {
         String consulta = "SELECT TITULO, DESCRIPCION FROM JUEGOS WHERE ID_JUEGO = ?";
 
@@ -121,15 +129,23 @@ public class JuegoDAO {
         sentencia.executeUpdate();
     }
 
+    /**
+     * Busca un juego dentro de la base de datos, por titulo
+     *
+     * @param tituloJuego
+     * @return Devuelve una colección de juegos a partir de la busqueda
+     * realizada
+     * @throws SQLException
+     */
     public ArrayList<Juego> buscarJuego(String tituloJuego) throws SQLException {
-        String consulta = "SELECT TITULO FROM JUEGOS WHERE TITULO LIKE '%"+tituloJuego+"%'";
-        
+        String consulta = "SELECT TITULO FROM JUEGOS WHERE TITULO LIKE '%" + tituloJuego + "%'";
+
         ArrayList<Juego> listadoJuegos = new ArrayList<>();
-        
+
         PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
         ResultSet resultado = sentencia.executeQuery();
-        
-        while(resultado.next()){
+
+        while (resultado.next()) {
             Juego juego = new Juego();
             juego.setTituloJuego(resultado.getString(1));
             listadoJuegos.add(juego);

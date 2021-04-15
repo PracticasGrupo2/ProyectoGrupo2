@@ -19,10 +19,10 @@ public class EliminarDesarrolladorServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
-        
+
         int idDesarrollador = Integer.parseInt(request.getParameter("id"));
         DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
-        
+
         try {
             desarrolladorDAO.eliminarDesarrollador(idDesarrollador);
             response.sendRedirect("desarrolladores.jsp?message=Desarrollador eliminado");
@@ -30,7 +30,7 @@ public class EliminarDesarrolladorServlet extends HttpServlet {
             Logger.getLogger(EliminarDesarrolladorServlet.class.getName()).log(Level.SEVERE, null, sqle);
         }
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);

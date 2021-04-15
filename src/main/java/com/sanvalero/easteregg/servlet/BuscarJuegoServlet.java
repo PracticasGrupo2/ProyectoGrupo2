@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet que obtiene la lista completa de juegos de la base de datos
+ * Servlet que busca un juego por titulo dentro de un listado de juegos
  */
 @WebServlet(name = "busqueda", urlPatterns = {"/busqueda"})
 public class BuscarJuegoServlet extends HttpServlet {
@@ -23,14 +23,14 @@ public class BuscarJuegoServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<p>Listado de juegos (con servlet)</p>");
         JuegoDAO juegoDAO = new JuegoDAO();
-        
+
         String tituloJuego = request.getParameter("titulo");
-        
+
         try {
             ArrayList<Juego> juegos = juegoDAO.buscarJuego(tituloJuego);
             out.println("<ul>");
             for (Juego juego : juegos) {
-                out.println("<li>" + juego.getTituloJuego()+"</li>");
+                out.println("<li>" + juego.getTituloJuego() + "</li>");
             }
 
             // Muestra el mensaje (si lo hay)
@@ -42,8 +42,7 @@ public class BuscarJuegoServlet extends HttpServlet {
             sqle.printStackTrace();
         }
     }
-    
-    
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
