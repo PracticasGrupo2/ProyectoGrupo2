@@ -31,12 +31,15 @@ public class ModificarJuegoServlet extends HttpServlet {
         
         Juego juego = new Juego(idJuego, tituloJuego, descripcionJuego);
         
+        PrintWriter out = response.getWriter();
         try {
             juegoDAO.modificarJuego(juego);
-            PrintWriter out = response.getWriter();
-            response.sendRedirect("modificarJuego.jsp?status=ok");
+            
+            out.write("Juego modificado con &eacute;xito");
+            //response.sendRedirect("registrarJuego.jsp?status=ok");
         } catch (SQLException sqle) {
-            response.sendRedirect("modificarJuego.jsp?status=error");
+            out.write("Este juego no se ha podido modificar");
+            //response.sendRedirect("registrarJuego.jsp?status=error");
             sqle.printStackTrace();
         }
     }

@@ -5,6 +5,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modificar juego</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("form").on("submit", function(event) {
+                    event.preventDefault();
+                    
+                    var formValues= $(this).serialize();
+                    
+                    $.post("modificar-juego", formValues, function(data){
+                        $("#result").html(data);
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
        
@@ -14,7 +28,7 @@
         %>
         
         <h1>Modificar juego</h1>
-        <form method="post" action="modificar-juego">
+        <form>
             Nuevo Título:
             <input type="text" name="titulo" value="<%=titulo%>"/><br/>
             Descripción:
@@ -25,18 +39,7 @@
             
             <input type="submit" value="Modificar"/>
         </form>
-        
-        <%
-            String status = request.getParameter("status");
-            if (status == null)
-                status = "";
-                
-            if (status.equals("ok")) {
-                out.println("<p style='color:green'>El juego se ha modificado con éxito</p>");
-            } else if (status.equals("error")) {
-                out.println("<p style='color:red'>No se ha podido modificar el juego</p>");
-            }
-        %>
+        <div id="result"></div>
     </body>
 </html>
 
