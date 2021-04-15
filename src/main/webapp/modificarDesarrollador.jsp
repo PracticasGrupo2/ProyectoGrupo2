@@ -60,6 +60,9 @@
                     <input type="text" name="email" size = "50" value="<%=email%>" id="black"/><br/>
                     Nuevo pais:
                     <input type="text" name="ubicacion" size = "30" value="<%=ubicacion%>" id="black"/><br/>
+                    Nuevo logotipo:
+                    <input type="file" name="file" accept="image/png, .jpeg, .jpg, image/gif"
+                           style="color: transparent; background: transparent"/><br/>
                     <input type="hidden" name="id" value="<%=id%>" id="black"/><br/>
                     <input type="submit" value="Modificar" class="btn"/>
                     <div id="solu"></div> 
