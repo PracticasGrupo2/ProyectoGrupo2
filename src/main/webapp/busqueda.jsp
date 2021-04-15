@@ -15,7 +15,7 @@
         <title>Listado de juegos</title>         
     </head>
     <body>
-                <!-- Side navigation -->
+        <!-- menu -->
         <div class="navIzq">
           <a id="esp" href="#">OPCIONES</a>
           <br>
@@ -24,10 +24,17 @@
           <a href="desarrolladores.jsp">Ver Desarrolladores</a>
           <a href="registrarJuego.jsp">Registrar Juegos</a>
           <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a>  
-          <a href="novedades.html">Novedades</a>
+          <a href="novedades.html">Novedades</a>         
+           <!-- redes -->   
+        <div class="footN">
+            <a href="https://m.facebook.com/login/?locale2=es_ES" class="fa fa-facebook"></a><!--enlaces ficticios a redes de la página-->           
+            <a href="https://twitter.com/login?lang=es" class="fa fa-twitter"></a>            
+            <a href="https://www.instagram.com/accounts/login/?hl=es" class="fa fa-instagram"></a>            
+            <a href="https://support.google.com/mail/answer/56256?hl=es" class="fa fa-envelope"></a>            
+            <a href="https://novedades.orange.es" class="fa fa-phone"></a>            
         </div>
-
-        <!-- Page content -->
+        </div>
+        <!-- Contenido de la pagina -->  
         <div class="bodyM">    
             <div class="listaJ" id="lj">
                 <div class="lineblack"></div>

@@ -131,79 +131,30 @@ font-family: 'Press Start 2P', cursive;*/
     color: #818181;
     cursor: default; 
 }
-
+/* redes del menu*/
+.footN {
+    position: fixed;
+    z-index: 1; 
+    display: flex;
+    justify-content: center;  
+    bottom: 0;  
+    margin-left: 10px;
+    margin-bottom: 10px;
+    
+    opacity: 0.5;     
+}
+.footN a {
+    padding: 0px 0px 0px 0px;
+    width: 100%;   
+    padding-right: 15px;
+}
 /* estilo del contenido en el cuerpo de la pag, hace que case con el menu */
 .bodyM {
   margin-left: 160px; /* Same as the width of the sidebar */
   padding: 0px 10px;
 }
 /*----------------------------------------------------------------------------*/
-.slide-container {/*slider en bloque de imagenes*/
-  margin: 0 auto;
-  margin-top: 5px;
-  
-  position: relative;
-  width: 1000px;
-  height: 500px;
-  
-  margin-bottom: 15px;
-  border: none;
-  background-color: rgba(128, 128, 128, 0.253);   
-}
-.slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding-left: 15px;
-  z-index: -1;
-  
-}
-.slider a:hover{
-    opacity: 0.7;
-}
 
-#ri1, #ri2, #ri3, #ri4 {
-  display: none;
-}
-
-.pre, .nxt {/*botones de izq y dch*/
-  width: 8%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  background-color: #111;
-  color: #111;
-  font-family: 'Roboto', sans-serif;
-  font-size: 50px; 
-  text-align: center;
-  padding-top: 40px;
-  
-  z-index: 99;
-  cursor: pointer;
-}
-.pre {
-  left: -25px;
-}
-.nxt {
-  right: -25px;  
-}
-
-.pre a:hover, .next a:hover{
-    opacity: 0.5;
-}
-
-#ri1:checked ~ #uno,
-#ri2:checked ~ #dos,
-#ri3:checked ~ #tres,
-#ri4:checked ~ #cuatro {
-  z-index: 9;
-}
-#ri1:checked ~ .bn #d1,
-#ri2:checked ~ .bn #d2,
-#ri3:checked ~ .bn #d3,
-#ri4:checked ~ .bn #d4 {
-  background: #111;
-}
 /*----------------------------------------------------------------------------*/
 
 #home {  
@@ -260,8 +211,13 @@ font-family: 'Press Start 2P', cursive;*/
 }
 
 .listaJ ul li {
-   list-style: none;
+   list-style: none; 
 }
+
+#put0{
+    padding-right: 40px;
+}
+
 #lj a:hover{
     color: #ffcc00;
 }
@@ -375,7 +331,84 @@ font-family: 'Press Start 2P', cursive;*/
     padding-top: 10px;
     padding-bottom: 10px;
 }
+/*----------------------------------------------------------------------------*/
 
+/*---------------------Imagenes que rotan (novedades)-------------------------*/
+
+/*----------------------------------------------------------------------------*/
+
+.divSlide{
+    
+    width: 100%;
+    height: 500px;
+    background-color: #111;
+    margin-bottom: 20px;
+}
+.sliderMM {
+    
+  margin:0 auto ;   
+  align-self: center;
+  position: relative;
+  height: 500px;
+  width: 1200px;
+  background: black;
+  overflow: hidden;
+}
+.slideMM,
+.slideMM img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  width: inherit;
+}
+.slideMM {
+  transform: translateX(100%);
+  -webkit-animation: slide 50s ease-in-out 0s infinite;
+}
+.slideMM h1 {
+  position: absolute;
+  top: 20%;
+  right: 0;
+  height: 10%;
+  color: white;
+}
+.slideMM p {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  height: 60%;
+  color: white;
+}
+.slideMM:nth-child(2) {
+  -webkit-animation-delay: 10s;
+}
+.slideMM:nth-child(3) {
+  -webkit-animation-delay: 20s;
+}
+.slideMM:nth-child(4) {
+  -webkit-animation-delay: 30s;
+}
+.slideMM:nth-child(5) {
+  -webkit-animation-delay: 40s;
+}
+@-webkit-keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+  2% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(0);
+  }
+  22% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
 /*--------------------------------media---------------------------------------*/
 @media all and(max-width:800px){

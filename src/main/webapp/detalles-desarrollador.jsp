@@ -9,48 +9,55 @@
         <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Chakra+Petch:wght@300&family=Permanent+Marker&family=Press+Start+2P&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">      
         <link rel="stylesheet" href="css/style.css" type="text/css">
-        <title>Listado de juegos</title>         
+        <link rel="icon" type="image/png" href="images/moneda.gif" /><!--enlace para icono de la pestaña-->
+        <title>Listado de desarrolladores</title>         
     </head>
     <body>
-                <!-- Side navigation -->
+        <!-- menu -->
         <div class="navIzq">
-          <a href="#">OPCIONES</a>
+          <a id="esp" href="#">OPCIONES</a>
           <br>
-          <a href="juegos">Ver lista</a>
-          <a href="#">Detalle</a>
-          <a href="#">Borrar</a>
-          <a href="registrarJuego.jsp">Registrar</a>         
+          <a href="buscarJuego.jsp">Buscar</a> 
+          <a href="juegos.jsp">Ver Juegos</a>
+          <a href="desarrolladores.jsp">Ver Desarrolladores</a>
+          <a href="registrarJuego.jsp">Registrar Juegos</a>
+          <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a>  
+          <a href="novedades.html">Novedades</a>         
+           <!-- redes -->   
+            <div class="footN">
+                <a href="https://m.facebook.com/login/?locale2=es_ES" class="fa fa-facebook"></a><!--enlaces ficticios a redes de la página-->           
+                <a href="https://twitter.com/login?lang=es" class="fa fa-twitter"></a>            
+                <a href="https://www.instagram.com/accounts/login/?hl=es" class="fa fa-instagram"></a>            
+                <a href="https://support.google.com/mail/answer/56256?hl=es" class="fa fa-envelope"></a>            
+                <a href="https://novedades.orange.es" class="fa fa-phone"></a>            
+            </div>
         </div>
-
-        <!-- Page content -->
+        <!-- Contenido de la pagina --> 
         <div class="bodyM">    
         <%
             String nombre = request.getParameter("nombre");
             String email = request.getParameter("email");
             String pais = request.getParameter("pais");
         %>
-        <h1>
-            <%= nombre%>
-        </h1>
-        
-        <h3>Email: 
-            <%= email%>
-        </h3>
-        
-        <h3>Ubicación:  
-            <%= pais%>
-        </h3>
+            <div class="listaJ" id="lj">
 
-        <%
-            // Muestra el mensaje (si lo hay)
-            String message = request.getParameter("message");
-            if (message != null) {
-        %>
-            <p style='color:green'><%= message %></p>
-        <%        
-            }
-        %>
-        
-        </div><!--<!-- fin class="main" -->
+                    <div class="lineblack"></div>
+                        <h1 id="h1L"><%=nombre%></h1>
+                    <div class="lineblack"></div>
+
+            <h3>Email: <%= email%></h3>
+
+            <h3>Ubicación:  <%= pais%></h3>
+            <%
+                // Muestra el mensaje (si lo hay)
+                String message = request.getParameter("message");
+                if (message != null) {
+            %>
+                <p style='color:green'><%= message %></p>
+            <%        
+                }
+            %>  
+            </div>
+        </div><!--<!-- fin class="bodyM" -->
     </body>
 </html>
