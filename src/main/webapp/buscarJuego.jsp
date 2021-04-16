@@ -16,7 +16,7 @@
     <body>
         <!-- menu -->
         <div class="navIzq">
-          <a id="esp" href="#">Options</a>
+          <a id="esp" href="#">OPTIONS</a>
           <br>
           <a href="buscarJuego.jsp">Search</a> 
           <a href="juegos.jsp?page=0">Games</a>
