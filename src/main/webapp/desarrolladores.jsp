@@ -40,8 +40,44 @@
         <div class="bodyM">  
             <div class="lineblack"></div>
                 <h1 id="tit">Lista de desarrolladores</h1>
-                <div class="lineblack"></div> 
-                
+                <div class="lineblack"></div>
+                <%
+                    DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
+                    int pagina = (Integer.parseInt(request.getParameter("page")))|0;
+                    ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.irPagina(pagina);
+                    double numDesarrolladores = desarrolladorDAO.getNumDesarrolladores();
+
+                %>
+                <div class="pagi">
+                    <%if(pagina > 0) {%>
+                        <a href="/easteregg/desarrolladores.jsp?page=<%=pagina-1%>">
+                        < Anterior
+                        </a>
+                    <%}%>
+                    <%if(numDesarrolladores > 6) {%>
+                        ...
+                    <%}%>
+                    <%if (pagina < numDesarrolladores / 6 - 1) {%>
+                        <a href="/easteregg/desarrolladores.jsp?page=<%=pagina+1%>">
+                        Siguiente >
+                        </a>
+                    <%}%>
+                </div>
+                    <div class="pagi" style="position: fixed; bottom: 0px; padding-right: 9.3%;">
+                    <%if(pagina > 0) {%>
+                        <a href="/easteregg/desarrolladores.jsp?page=<%=pagina-1%>">
+                        < Anterior
+                        </a>
+                    <%}%>
+                    <%if(numDesarrolladores > 6) {%>
+                        ...
+                    <%}%>
+                    <%if (pagina < numDesarrolladores / 6 - 1) {%>
+                        <a href="/easteregg/desarrolladores.jsp?page=<%=pagina+1%>">
+                        Siguiente >
+                        </a>
+                    <%}%>
+                </div>
             <div class="listaJ" id="lj">   
                 <ul id="put0">
                     <li id="put1"><img src="images/des1.jpg" alt="alt" /><img src="images/des2.jpg" alt="alt" /></li>
@@ -52,14 +88,6 @@
                     <li id="put1"><img src="images/des3.jpg" alt="alt" /><img src="images/des10.jpg" alt="alt" /></li>
                 </ul> 
                        
-
-                <%
-                    DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
-                    int pagina = (Integer.parseInt(request.getParameter("page")))|0;
-                    ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.irPagina(pagina);
-                    double numDesarrolladores = desarrolladorDAO.getNumDesarrolladores();
-
-                %>
                 <ul id="put0">
                 <%
                     // Muestra el mensaje (si lo hay)
@@ -82,21 +110,7 @@
                 <%    
                     }
                 %>
-                </ul>
-                <%if(pagina > 0) {%>
-                    <a href="/easteregg/desarrolladores.jsp?page=<%=pagina-1%>">
-                    Anterior
-                    </a>
-                <%}%>
-                <%if(numDesarrolladores > 6) {%>
-                    ...
-                <%}%>
-                <%if(pagina < numDesarrolladores / 6 - 1) {%>
-                    <a href="/easteregg/desarrolladores.jsp?page=<%=pagina+1%>">
-                    Siguiente
-                    </a>
-                <%}%>
-                
+                </ul>                
                 <ul id="put0">
                     <li id="put1"><img src="images/des1.jpg" alt="alt" /><img src="images/des2.jpg" alt="alt" /></li>
                     <li id="put1"><img src="images/des3.jpg" alt="alt" /><img src="images/des4.jpg" alt="alt" /></li>
