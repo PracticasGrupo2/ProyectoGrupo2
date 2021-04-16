@@ -21,13 +21,13 @@ public class GetDesarrolladorServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         PrintWriter out = response.getWriter();
-        out.println("<p>Listado de desarrolladores (con servlet)</p>");
+//        out.println("<p>Listado de desarrolladores (con servlet)</p>");
         DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
         try {
             ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.getDesarrolladores();
             out.println("<ul>");
             for (Desarrollador desarrollador : desarrolladores) {
-                out.println("<li>" + desarrollador.getNombreDesarrollador() + " <a href='eliminar-desarrolladores?id=" + desarrollador.getIdDesarrollador() + "'>Eliminar</a></li>");
+                out.println("<li>" + desarrollador.getNombreDesarrollador() + " <a href='eliminar-desarrolladores?id=" + desarrollador.getIdDesarrollador() + "'>Delete</a></li>");
             }
 
             // Muestra el mensaje (si lo hay)

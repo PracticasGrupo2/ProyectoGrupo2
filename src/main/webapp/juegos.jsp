@@ -14,19 +14,19 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">      
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <link rel="icon" type="image/png" href="images/moneda.gif" /><!--enlace para icono de la pestaña-->
-        <title>Listado de juegos</title>         
+        <title>Game list</title>         
     </head>
     <body>               
      <!-- menu -->
         <div class="navIzq">
-          <a id="esp" href="#">OPCIONES</a>
+          <a id="esp" href="#">OPTIONS</a>
           <br>
-          <a href="buscarJuego.jsp">Buscar</a> 
-          <a href="juegos.jsp?page=0">Ver Juegos</a>
-          <a href="desarrolladores.jsp?page=0">Ver Desarrolladores</a>
-          <a href="registrarJuego.jsp">Registrar Juegos</a>
-          <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a>  
-          <a href="novedades.html">Novedades</a>         
+          <a href="buscarJuego.jsp">Search</a> 
+          <a href="juegos.jsp?page=0">Games</a>
+          <a href="desarrolladores.jsp?page=0">Developers</a>
+          <a href="registrarJuego.jsp">Register a game</a>
+          <a href="registrarDesarrollador.jsp">Register a developer</a>  
+          <a href="novedades.html">News</a>
            <!-- redes -->   
             <div class="footN">
                 <a href="https://m.facebook.com/login/?locale2=es_ES" class="fa fa-facebook"></a><!--enlaces ficticios a redes de la página-->           
@@ -40,7 +40,7 @@
         <div class="bodyM">
 
             <div class="lineblack"></div>
-                <h1 id="tit">Lista de juegos</h1>
+                <h1 id="tit">Game list</h1>
                 <div class="lineblack"></div>
                  <%
                     JuegoDAO juegoDAO = new JuegoDAO();
@@ -54,7 +54,7 @@
                 <div class="pagi">
                     <%if(pagina > 0) {%>
                         <a href="/easteregg/juegos.jsp?page=<%=pagina-1%>">
-                        < Anterior
+                        < Back
                         </a>
                     <%}%>
                     <%if(numJuegos > 6) {%>
@@ -62,14 +62,14 @@
                     <%}%>
                     <%if (pagina < numJuegos / 6 - 1) {%>
                         <a href="/easteregg/juegos.jsp?page=<%=pagina+1%>">
-                        Siguiente >
+                        Next >
                         </a>
                     <%}%>
                 </div>
                     <div class="pagi" style="position: fixed; bottom: 0px; padding-right: 9.3%;">
                     <%if(pagina > 0) {%>
                         <a href="/easteregg/juegos.jsp?page=<%=pagina-1%>">
-                        < Anterior
+                        < Back
                         </a>
                     <%}%>
                     <%if(numJuegos > 6) {%>
@@ -77,7 +77,7 @@
                     <%}%>
                     <%if (pagina < numJuegos / 6 - 1) {%>
                         <a href="/easteregg/juegos.jsp?page=<%=pagina+1%>">
-                        Siguiente >
+                        Next >
                         </a>
                     <%}%>
                 </div>
@@ -110,8 +110,8 @@
                         String genero = generoDAO.getNombreGenero(juego.getIdJuego());
                 %>
                 <li id="put1"><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div>
-                <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modificar</a><br>
-                <a href="eliminar-juegos?page=<%=pagina%>&id=<%= juego.getIdJuego()%>&url=b">Eliminar</a></li>
+                <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modify</a><br>
+                <a href="eliminar-juegos?page=<%=pagina%>&id=<%= juego.getIdJuego()%>&url=b">Delete</a></li>
                 
                 <br>
                 <div class="lineblack"></div>

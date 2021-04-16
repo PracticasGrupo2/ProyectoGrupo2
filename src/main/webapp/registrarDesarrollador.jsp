@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">      
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <link rel="icon" type="image/png" href="images/moneda.gif" /><!--enlace para icono de la pestaña-->
-        <title>Registrar desarrollador</title>
+        <title>Register a developer</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -27,14 +27,14 @@
     <body>
         <!-- menu -->
         <div class="navIzq">
-          <a id="esp" href="#">OPCIONES</a>
+          <a id="esp" href="#">OPTIONS</a>
           <br>
-          <a href="buscarJuego.jsp">Buscar</a> 
-          <a href="juegos.jsp?page=0">Ver Juegos</a>
-          <a href="desarrolladores.jsp?page=0">Ver Desarrolladores</a>
-          <a href="registrarJuego.jsp">Registrar Juegos</a>
-          <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a>  
-          <a href="novedades.html">Novedades</a>         
+          <a href="buscarJuego.jsp">Search</a> 
+          <a href="juegos.jsp?page=0">Games</a>
+          <a href="desarrolladores.jsp?page=0">Developers</a>
+          <a href="registrarJuego.jsp">Register a game</a>
+          <a href="registrarDesarrollador.jsp">Register a developer</a>  
+          <a href="novedades.html">News</a>
            <!-- redes -->   
             <div class="footN">
                 <a href="https://m.facebook.com/login/?locale2=es_ES" class="fa fa-facebook"></a><!--enlaces ficticios a redes de la página-->           
@@ -48,18 +48,18 @@
         <div class="bodyM">
             <div class="d1">
                 <form class="container">
-                    <h1>Registrar un desarrrollador</h1>
+                    <h1>Register a developer</h1>
                     <br><br>
-                    Nombre:
+                    Name:
                     <input type="text" name="nombre" id="black"/><br/>
                     Email:
                     <input type="text" name="email" id="black"/><br/>
-                    País:
+                    Country:
                     <input type="text" name="pais" id="black"/><br/>
-                    Subir logotipo:
+                    Upload logo:
                     <input type="file" name="file" accept="image/png, .jpeg, .jpg, image/gif"
                            style="color: transparent; background: transparent; padding-bottom: 20px"/><br/>
-                    <input type="submit" value="Registrar" class="btn"/>
+                    <input type="submit" value="Register" class="btn"/>
                     <div id="result"></div>
                 </form>
             </div>
