@@ -35,12 +35,12 @@
         </div>
         </div>
         <!-- Contenido de la pagina -->  
-        <div class="bodyM">    
-            <div class="listaJ" id="lj">
+        <div class="bodyM">  
                 <div class="lineblack"></div>
-                <h1 id="h1L">Resultados de la búsqueda:</h1>
+                    <h1 id="tit">Resultados de la búsqueda:</h1>
                 <div class="lineblack"></div>
-        
+            <div class="listaJ2" id="lj">
+               
                 <%
                     JuegoDAO juegoDAO = new JuegoDAO();
                     String titulo = request.getParameter("nombre");
@@ -56,9 +56,10 @@
                         String desarrollador = desarrolladorDAO.getNombreDesarrollador(juego.getIdJuego());
                         String genero = generoDAO.getNombreGenero(juego.getIdJuego());
                 %>
-                <li><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div>
+                <br><li id="put1" style="margin-right: 40px;"><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div>
                 <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modificar</a><br>
-                <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>&url=ok">Eliminar</a></li>
+                <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>&url=ok">Eliminar</a></li><br>
+                <div class="lineblack" style="width: 98%;"></div>
                 <%    
                     }
 
@@ -75,9 +76,7 @@
                 }
             %>
             </div>
-        
-        
-        
+
         </div><!--<!-- fin class="main" -->
     </body>
 </html>

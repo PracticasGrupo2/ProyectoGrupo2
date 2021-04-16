@@ -42,7 +42,33 @@
             <div class="lineblack"></div>
                 <h1 id="tit">Lista de juegos (con JSP)</h1>
                 <div class="lineblack"></div>
-            
+                 <%
+                    JuegoDAO juegoDAO = new JuegoDAO();
+                    int pagina = (Integer.parseInt(request.getParameter("page")))|0;
+                    ArrayList<Juego> juegos = juegoDAO.irPagina(pagina);
+                    
+                    DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
+                    GeneroDAO generoDAO = new GeneroDAO();
+                %>
+                <div class="pagi">
+                    <a href="/easteregg/juegos.jsp?page=<%=pagina-1%>">
+                   < Anterior
+                    </a>
+                   ...
+                    <a href="/easteregg/juegos.jsp?page=<%=pagina+1%>">
+                    Siguiente >
+                    </a>
+                </div>
+                    <div class="pagi" style="position: fixed; bottom: 0px; padding-right: 9.3%;">
+                    <a href="/easteregg/juegos.jsp?page=<%=pagina-1%>">
+                   < Anterior
+                    </a>
+                   ...
+                    <a href="/easteregg/juegos.jsp?page=<%=pagina+1%>">
+                    Siguiente >
+                    </a>
+                </div>
+            <div class="lineblack"></div>
             <div class="listaJ" id="lj">
                 <ul id="put0">
                     <li id="put1"><img src="images/img6.jpg" alt="alt" /><img src="images/img3.jpg" alt="alt" /></li>
@@ -52,15 +78,7 @@
                     <li id="put1"><img src="images/img11.jpg" alt="alt" /><img src="images/img12.jpg" alt="alt" /></li>
                     <li id="put1"><img src="images/img13.jpg" alt="alt" /><img src="images/img14.jpg" alt="alt" /></li>
                 </ul>    
-                
-                <%
-                    JuegoDAO juegoDAO = new JuegoDAO();
-                    int pagina = (Integer.parseInt(request.getParameter("page")))|0;
-                    ArrayList<Juego> juegos = juegoDAO.irPagina(pagina);
-                    
-                    DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
-                    GeneroDAO generoDAO = new GeneroDAO();
-                %>
+           
                 <ul id="put0">                    
                 <%
                     for (Juego juego : juegos) {
@@ -79,13 +97,7 @@
                     }
                 %>                     
                 </ul>
-                <a href="/easteregg/juegos.jsp?page=<%=pagina-1%>">
-                Anterior
-                </a>
-
-                <a href="/easteregg/juegos.jsp?page=<%=pagina+1%>">
-                Siguiente
-                </a>
+                
                 <%
                     // Muestra el mensaje (si lo hay)
                     String message = request.getParameter("message");
@@ -94,7 +106,7 @@
                     <p style='color:green'><%= message %></p>
                 <%        
                     }
-                %>  
+                %>                  
                 <ul id="put0">
                     <li id="put1"><img src="images/img6.jpg" alt="alt" /><img src="images/img3.jpg" alt="alt" /></li>
                     <li id="put1"><img src="images/img4.jpg" alt="alt" /><img src="images/img5.jpg" alt="alt" /></li>
@@ -102,8 +114,9 @@
                     <li id="put1"><img src="images/img9.jpg" alt="alt" /><img src="images/img10.jpg" alt="alt" /></li>
                     <li id="put1"><img src="images/img11.jpg" alt="alt" /><img src="images/img12.jpg" alt="alt" /></li>
                     <li id="put1"><img src="images/img13.jpg" alt="alt" /><img src="images/img14.jpg" alt="alt" /></li>
-                </ul> 
-            </div>            
+                </ul>                
+            </div> 
+                
         </div>
     </body>
 </html>
