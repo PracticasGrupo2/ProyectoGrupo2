@@ -22,6 +22,7 @@ public class EliminarJuegoServlet extends HttpServlet {
 
         int idJuego = Integer.parseInt(request.getParameter("id"));
         String redireccion = request.getParameter("url");
+        int pagina = Integer.parseInt(request.getParameter("page"));
         
         JuegoDAO juegoDAO = new JuegoDAO();
 
@@ -30,7 +31,7 @@ public class EliminarJuegoServlet extends HttpServlet {
             if (redireccion.length() == 2){
                 response.sendRedirect("busqueda.jsp?message=Juego eliminado");
             } else {
-                response.sendRedirect("juegos.jsp?message=Juego eliminado");
+                response.sendRedirect("juegos.jsp?page=" + pagina + "&message=Juego eliminado");
             }
         } catch (SQLException sqle) {
             Logger.getLogger(EliminarJuegoServlet.class.getName()).log(Level.SEVERE, null, sqle);

@@ -100,6 +100,7 @@ public class JuegoDAO {
         }
         return listadoJuegos;
     }
+    
     /**
      * Obtiene una lista de juegos a partir del id del juego
      *
@@ -165,6 +166,18 @@ public class JuegoDAO {
             listadoJuegos.add(juego);
         }
         return listadoJuegos;
+    }
+    
+    public int getNumJuegos() throws SQLException {
+        
+        String consulta = "SELECT COUNT(*) FROM JUEGOS";
+        
+        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
+        ResultSet resultado = sentencia.executeQuery();
+        resultado.next();
+        int numJuegos = resultado.getInt(1);
+        
+        return numJuegos;
     }
 
 }
