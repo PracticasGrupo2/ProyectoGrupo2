@@ -12,19 +12,19 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">      
         <link rel="stylesheet" href="css/style.css" type="text/css">
          <link rel="icon" type="image/png" href="images/moneda.gif" /><!--enlace para icono de la pestaña-->
-        <title>Listado de juegos</title>         
+        <title>Game list</title>         
     </head>
     <body>
         <!-- menu -->
         <div class="navIzq">
-          <a id="esp" href="#">OPCIONES</a>
+          <a id="esp" href="#">Options</a>
           <br>
-          <a href="buscarJuego.jsp">Buscar</a> 
-          <a href="juegos.jsp?page=0">Ver Juegos</a>
-          <a href="desarrolladores.jsp?page=0">Ver Desarrolladores</a>
-          <a href="registrarJuego.jsp">Registrar Juegos</a>
-          <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a>  
-          <a href="novedades.html">Novedades</a>         
+          <a href="buscarJuego.jsp">Search</a> 
+          <a href="juegos.jsp?page=0">Games</a>
+          <a href="desarrolladores.jsp?page=0">Developers</a>
+          <a href="registrarJuego.jsp">Register a game</a>
+          <a href="registrarDesarrollador.jsp">Register a developer</a>  
+          <a href="novedades.html">News</a>         
            <!-- redes -->   
         <div class="footN">
             <a href="https://m.facebook.com/login/?locale2=es_ES" class="fa fa-facebook"></a><!--enlaces ficticios a redes de la página-->           
@@ -37,7 +37,7 @@
         <!-- Contenido de la pagina -->  
         <div class="bodyM">  
                 <div class="lineblack"></div>
-                    <h1 id="tit">Resultados de la búsqueda:</h1>
+                    <h1 id="tit">Search results:</h1>
                 <div class="lineblack"></div>
             <div class="listaJ2" id="lj">
                
@@ -57,8 +57,8 @@
                         String genero = generoDAO.getNombreGenero(juego.getIdJuego());
                 %>
                 <br><li id="put1" style="margin-right: 40px;"><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div>
-                <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modificar</a><br>
-                <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>&url=ok">Eliminar</a></li><br>
+                <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modify</a><br>
+                <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>&url=ok">Delete</a></li><br>
                 <div class="lineblack" style="width: 98%;"></div>
                 <%    
                     }
