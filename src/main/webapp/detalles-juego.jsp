@@ -40,12 +40,13 @@
             String desarrollador = request.getParameter("desarrollador");
             String genero = request.getParameter("genero");
         %>        
-            <div class="listaJ" id="lj">
-
+            
                 <div class="lineblack"></div>
-                    <h1 id="h1L"><%=titulo%></h1>
+                    <h1 id="tit"><%=titulo%></h1>
                 <div class="lineblack"></div>
                 
+        
+        <div class="listaJ2" id="lj"> 
                 <h3>Desarrollador: <%=desarrollador%></h3>
                 
                 <h3>Género: <%=genero%></h3>

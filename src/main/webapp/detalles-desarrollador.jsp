@@ -39,12 +39,12 @@
             String email = request.getParameter("email");
             String pais = request.getParameter("pais");
         %>
-            <div class="listaJ" id="lj">
-
-                    <div class="lineblack"></div>
-                        <h1 id="h1L"><%=nombre%></h1>
-                    <div class="lineblack"></div>
-
+                  
+            <div class="lineblack"></div>
+                    <h1 id="tit"><%=nombre%></h1>
+            <div class="lineblack"></div>   
+        
+        <div class="listaJ2" id="lj">
             <h3>Email: <%= email%></h3>
 
             <h3>Ubicación:  <%= pais%></h3>
