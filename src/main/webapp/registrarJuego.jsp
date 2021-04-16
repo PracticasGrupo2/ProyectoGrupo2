@@ -58,7 +58,7 @@
                     <input type="text" name="desarrollador" id="black"/><br/>
                     Genre:
                     <input type="text" name="genero" id="black"/><br/>
-                    Upload a image:
+                    Upload an image:
                     <input type="file" name="file" accept="image/png, .jpeg, .jpg, image/gif"
                            style="color: transparent; background: transparent; padding-bottom: 20px"/><br/>
 
