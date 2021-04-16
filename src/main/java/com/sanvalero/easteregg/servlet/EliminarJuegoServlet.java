@@ -31,7 +31,7 @@ public class EliminarJuegoServlet extends HttpServlet {
             if (redireccion.length() == 2){
                 response.sendRedirect("busqueda.jsp?message=Game deleted");
             } else {
-                response.sendRedirect("juegos.jsp?page=" + pagina + "&message=Game deteled");
+                response.sendRedirect("juegos.jsp?page=" + pagina + "&message=Game deleted");
             }
         } catch (SQLException sqle) {
             Logger.getLogger(EliminarJuegoServlet.class.getName()).log(Level.SEVERE, null, sqle);

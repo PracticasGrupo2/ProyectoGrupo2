@@ -64,7 +64,7 @@
                     }
 
                     if (juegos.isEmpty() & message == null) {%>
-                <p style="padding-top: 40px; font-size: 20px; color: #ffcc00">No se han encontrado coincidencias.</p>  
+                <p style="padding-top: 40px; font-size: 20px; color: #ffcc00">No matches found.</p>  
                     <%}%>
                 </ul>
             <%

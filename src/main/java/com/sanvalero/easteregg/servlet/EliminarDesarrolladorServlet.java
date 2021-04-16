@@ -26,7 +26,7 @@ public class EliminarDesarrolladorServlet extends HttpServlet {
 
         try {
             desarrolladorDAO.eliminarDesarrollador(idDesarrollador);
-            response.sendRedirect("desarrolladores.jsp?page=" + pagina + "&message=Desarrollador eliminado");
+            response.sendRedirect("desarrolladores.jsp?page=" + pagina + "&message=Developer deleted");
         } catch (SQLException sqle) {
             Logger.getLogger(EliminarDesarrolladorServlet.class.getName()).log(Level.SEVERE, null, sqle);
         }

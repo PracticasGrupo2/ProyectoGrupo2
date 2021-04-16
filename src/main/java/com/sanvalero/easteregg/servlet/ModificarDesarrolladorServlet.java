@@ -33,9 +33,9 @@ public class ModificarDesarrolladorServlet extends HttpServlet {
         try {
             desarrolladorDAO.modificarDesarrollador(desarrollador);
             
-            out.write("Developer successfully modified");
+            out.write("Developer has been modified successfully");
         } catch (SQLException sqle) {
-            out.write("This developer could not be modified");
+            out.write("Fail to modify a developer");
             sqle.printStackTrace();
         }
     }

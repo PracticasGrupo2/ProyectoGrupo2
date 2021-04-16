@@ -62,9 +62,9 @@ public class RegistrarJuegoServlet extends HttpServlet {
         try {
             juegoDAO.registrarJuego(juego);
 
-            out.write("Game successfully registered!");
+            out.write("Game has been registered successfully!");
         } catch (SQLException sqle) {
-            out.write("Fail to register game");
+            out.write("Fail to register a game");
             sqle.printStackTrace();
         }
     }

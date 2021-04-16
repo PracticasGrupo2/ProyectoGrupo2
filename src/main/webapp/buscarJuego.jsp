@@ -40,7 +40,7 @@
                     <h1>Search game</h1>
                     <br><br>
                     Search game by title:
-                    <input type="text" name="nombre" size="40px" placeholder="Write title game here" id="black"/><br/>
+                    <input type="text" name="nombre" size="40px" placeholder="Write title game here" id="black" required/><br/>
 
                     <input type="submit" value="Search" class="btn"/>
                 </form>

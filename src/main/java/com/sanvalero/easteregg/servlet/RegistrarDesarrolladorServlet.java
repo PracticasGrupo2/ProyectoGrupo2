@@ -41,10 +41,10 @@ public class RegistrarDesarrolladorServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             desarrolladorDAO.registrarDesarrollador(desarrollador);
-            out.write("Developer successfully registered!");
+            out.write("Developer has been registered successfully!");
           
         } catch (SQLException sqle) {
-            out.write("Fail to register developer");
+            out.write("Fail to register a developer");
             sqle.printStackTrace();
         }
     }
