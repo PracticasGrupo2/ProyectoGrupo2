@@ -21,11 +21,12 @@ public class EliminarDesarrolladorServlet extends HttpServlet {
             ServletException, IOException {
 
         int idDesarrollador = Integer.parseInt(request.getParameter("id"));
+        int pagina = Integer.parseInt(request.getParameter("page"));
         DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
 
         try {
             desarrolladorDAO.eliminarDesarrollador(idDesarrollador);
-            response.sendRedirect("desarrolladores.jsp?message=Desarrollador eliminado");
+            response.sendRedirect("desarrolladores.jsp?page=" + pagina + "&message=Desarrollador eliminado");
         } catch (SQLException sqle) {
             Logger.getLogger(EliminarDesarrolladorServlet.class.getName()).log(Level.SEVERE, null, sqle);
         }

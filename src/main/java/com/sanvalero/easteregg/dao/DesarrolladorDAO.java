@@ -178,4 +178,16 @@ public class DesarrolladorDAO {
         sentencia.setInt(4, desarrollador.getIdDesarrollador());
         sentencia.executeUpdate();
     }
+    
+    public int getNumDesarrolladores() throws SQLException {
+        
+        String consulta = "SELECT COUNT(*) FROM DESARROLLADORES";
+        
+        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
+        ResultSet resultado = sentencia.executeQuery();
+        resultado.next();
+        int numDesarrolladores = resultado.getInt(1);
+        
+        return numDesarrolladores;
+    }
 }

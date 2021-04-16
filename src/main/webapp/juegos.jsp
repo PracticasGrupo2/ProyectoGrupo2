@@ -40,33 +40,46 @@
         <div class="bodyM">
 
             <div class="lineblack"></div>
-                <h1 id="tit">Lista de juegos (con JSP)</h1>
+                <h1 id="tit">Lista de juegos</h1>
                 <div class="lineblack"></div>
                  <%
                     JuegoDAO juegoDAO = new JuegoDAO();
                     int pagina = (Integer.parseInt(request.getParameter("page")))|0;
                     ArrayList<Juego> juegos = juegoDAO.irPagina(pagina);
+                    double numJuegos = juegoDAO.getNumJuegos();
                     
                     DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
                     GeneroDAO generoDAO = new GeneroDAO();
                 %>
                 <div class="pagi">
-                    <a href="/easteregg/juegos.jsp?page=<%=pagina-1%>">
-                   < Anterior
-                    </a>
-                   ...
-                    <a href="/easteregg/juegos.jsp?page=<%=pagina+1%>">
-                    Siguiente >
-                    </a>
+                    <%if(pagina > 0) {%>
+                        <a href="/easteregg/juegos.jsp?page=<%=pagina-1%>">
+                        < Anterior
+                        </a>
+                    <%}%>
+                    <%if(numJuegos > 6) {%>
+                        ...
+                    <%}%>
+                    <%if (pagina < numJuegos / 6 - 1) {%>
+                        <a href="/easteregg/juegos.jsp?page=<%=pagina+1%>">
+                        Siguiente >
+                        </a>
+                    <%}%>
                 </div>
                     <div class="pagi" style="position: fixed; bottom: 0px; padding-right: 9.3%;">
-                    <a href="/easteregg/juegos.jsp?page=<%=pagina-1%>">
-                   < Anterior
-                    </a>
-                   ...
-                    <a href="/easteregg/juegos.jsp?page=<%=pagina+1%>">
-                    Siguiente >
-                    </a>
+                    <%if(pagina > 0) {%>
+                        <a href="/easteregg/juegos.jsp?page=<%=pagina-1%>">
+                        < Anterior
+                        </a>
+                    <%}%>
+                    <%if(numJuegos > 6) {%>
+                        ...
+                    <%}%>
+                    <%if (pagina < numJuegos / 6 - 1) {%>
+                        <a href="/easteregg/juegos.jsp?page=<%=pagina+1%>">
+                        Siguiente >
+                        </a>
+                    <%}%>
                 </div>
             <div class="lineblack"></div>
             <div class="listaJ" id="lj">
@@ -78,8 +91,19 @@
                     <li id="put1"><img src="images/img11.jpg" alt="alt" /><img src="images/img12.jpg" alt="alt" /></li>
                     <li id="put1"><img src="images/img13.jpg" alt="alt" /><img src="images/img14.jpg" alt="alt" /></li>
                 </ul>    
-           
-                <ul id="put0">                    
+                
+                <ul id="put0">
+                
+                <%
+                    // Muestra el mensaje (si lo hay)
+                    String message = request.getParameter("message");
+                    if (message != null) {
+                %>
+                    <p style='color:green'><%= message %></p>
+                <%        
+                    }
+                %>
+                
                 <%
                     for (Juego juego : juegos) {
                         String desarrollador = desarrolladorDAO.getNombreDesarrollador(juego.getIdJuego());
@@ -87,7 +111,7 @@
                 %>
                 <li id="put1"><div id="tG" ><a href="detalles-juego.jsp?titulo=<%= juego.getTituloJuego()%>&desarrollador=<%=desarrollador%>&genero=<%=genero%>&descripcion=<%=juego.getDescripcionJuego()%>"> <%= juego.getTituloJuego()%></a></div>
                 <a href="modificarJuego.jsp?id=<%= juego.getIdJuego()%>&titulo=<%=juego.getTituloJuego()%>&descripcion=<%=juego.getDescripcionJuego()%>">Modificar</a><br>
-                <a href="eliminar-juegos?id=<%= juego.getIdJuego()%>&url=b">Eliminar</a></li>
+                <a href="eliminar-juegos?page=<%=pagina%>&id=<%= juego.getIdJuego()%>&url=b">Eliminar</a></li>
                 
                 <br>
                 <div class="lineblack"></div>
@@ -98,15 +122,7 @@
                 %>                     
                 </ul>
                 
-                <%
-                    // Muestra el mensaje (si lo hay)
-                    String message = request.getParameter("message");
-                    if (message != null) {
-                %>
-                    <p style='color:green'><%= message %></p>
-                <%        
-                    }
-                %>                  
+                                  
                 <ul id="put0">
                     <li id="put1"><img src="images/img6.jpg" alt="alt" /><img src="images/img3.jpg" alt="alt" /></li>
                     <li id="put1"><img src="images/img4.jpg" alt="alt" /><img src="images/img5.jpg" alt="alt" /></li>

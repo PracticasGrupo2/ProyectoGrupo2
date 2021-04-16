@@ -39,7 +39,7 @@
 
         <div class="bodyM">  
             <div class="lineblack"></div>
-                <h1 id="tit">Lista de desarrolladores (con JSP)</h1>
+                <h1 id="tit">Lista de desarrolladores</h1>
                 <div class="lineblack"></div> 
                 
             <div class="listaJ" id="lj">   
@@ -57,26 +57,10 @@
                     DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
                     int pagina = (Integer.parseInt(request.getParameter("page")))|0;
                     ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.irPagina(pagina);
+                    double numDesarrolladores = desarrolladorDAO.getNumDesarrolladores();
+
                 %>
                 <ul id="put0">
-                <%
-                    for (Desarrollador desarrollador : desarrolladores) {
-                %>
-                <li id="put1" ><div id="tG" ><a href="detalles-desarrollador.jsp?nombre=<%= desarrollador.getNombreDesarrollador()%>&email=<%= desarrollador.getEmailDesarrollador()%>&pais=<%= desarrollador.getUbicacion()%>"><%= desarrollador.getNombreDesarrollador()%></a></div>
-                <a href="modificarDesarrollador.jsp?id=<%= desarrollador.getIdDesarrollador()%>&nombre=<%=desarrollador.getNombreDesarrollador()%>&email=<%=desarrollador.getEmailDesarrollador()%>&ubicacion=<%=desarrollador.getUbicacion()%>">Modificar</a></li><a href="eliminar-desarrollador?id=<%= desarrollador.getIdDesarrollador()%>">Eliminar</a></li>
-                <br><br>
-                <div class="lineblack"></div>
-                <br>
-                <%    
-                    }
-                %>
-                </ul>
-                <a href="/easteregg/desarrolladores.jsp?page=<%=pagina-1%>">
-                    Anterior
-                </a>
-                <a href="/easteregg/desarrolladores.jsp?page=<%=pagina+1%>">
-                Siguiente
-                </a>
                 <%
                     // Muestra el mensaje (si lo hay)
                     String message = request.getParameter("message");
@@ -86,6 +70,33 @@
                 <%        
                     }
                 %>
+                <%
+                    for (Desarrollador desarrollador : desarrolladores) {
+                %>
+                <li id="put1" ><div id="tG" ><a href="detalles-desarrollador.jsp?nombre=<%= desarrollador.getNombreDesarrollador()%>&email=<%= desarrollador.getEmailDesarrollador()%>&pais=<%= desarrollador.getUbicacion()%>"><%= desarrollador.getNombreDesarrollador()%></a></div>
+                <a href="modificarDesarrollador.jsp?id=<%= desarrollador.getIdDesarrollador()%>&nombre=<%=desarrollador.getNombreDesarrollador()%>&email=<%=desarrollador.getEmailDesarrollador()%>&ubicacion=<%=desarrollador.getUbicacion()%>">Modificar</a></li>
+                <a href="eliminar-desarrollador?page=<%=pagina%>&id=<%= desarrollador.getIdDesarrollador()%>">Eliminar</a></li>
+                <br><br>
+                <div class="lineblack"></div>
+                <br>
+                <%    
+                    }
+                %>
+                </ul>
+                <%if(pagina > 0) {%>
+                    <a href="/easteregg/desarrolladores.jsp?page=<%=pagina-1%>">
+                    Anterior
+                    </a>
+                <%}%>
+                <%if(numDesarrolladores > 6) {%>
+                    ...
+                <%}%>
+                <%if(pagina < numDesarrolladores / 6 - 1) {%>
+                    <a href="/easteregg/desarrolladores.jsp?page=<%=pagina+1%>">
+                    Siguiente
+                    </a>
+                <%}%>
+                
                 <ul id="put0">
                     <li id="put1"><img src="images/des1.jpg" alt="alt" /><img src="images/des2.jpg" alt="alt" /></li>
                     <li id="put1"><img src="images/des3.jpg" alt="alt" /><img src="images/des4.jpg" alt="alt" /></li>
