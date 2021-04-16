@@ -76,14 +76,7 @@ public class DesarrolladorDAO {
         }
         return listadoDesarrolladores;
     }
-
-    /**
-     * Obtiene el nombre del desarrollador a partir del id del juego
-     *
-     * @param idJuego
-     * @return Devuelve una colección con los desarrolladores
-     * @throws SQLException
-     */
+    
     public String getNombreDesarrollador(int idJuego) throws SQLException {
         String consulta = "SELECT DE.NOMBRE_DESARROLLADOR FROM DESARROLLADORES DE INNER JOIN JUEGOS JU ON "
                 + "DE.ID_DESARROLLADOR = JU.ID_DESARROLLADOR WHERE JU.ID_JUEGO = ?";
@@ -97,11 +90,47 @@ public class DesarrolladorDAO {
 
         return desarrollador;
     }
+    
+    /**
+     * Obtiene el nombre del desarrollador a partir del id del juego
+     * @param max
+     * @param min
+     * @return Devuelve una colección con los desarrolladores
+     * @throws SQLException
+     */
+    public ArrayList<Desarrollador> getDesarrolladorPaginar(int min, int max) throws SQLException {
+        String consulta = "SELECT * FROM (SELECT Q.*,ROWNUM RO FROM (SELECT ID_DESARROLLADOR, NOMBRE_DESARROLLADOR, EMAIL, PAIS FROM DESARROLLADORES ORDER BY NOMBRE_DESARROLLADOR)Q WHERE ROWNUM <="+max+") WHERE RO >="+min;
 
+        ArrayList<Desarrollador> listadoDesarrolladores = new ArrayList<>();
+        PreparedStatement sentencia = conexion.getConexion().prepareStatement(consulta);
+        ResultSet resultado = sentencia.executeQuery();
+
+        while (resultado.next()) {
+            Desarrollador desarrollador = new Desarrollador();
+            desarrollador.setIdDesarrollador(resultado.getInt(1));
+            desarrollador.setNombreDesarrollador(resultado.getString(2));
+            desarrollador.setEmailDesarrollador(resultado.getString(3));
+            desarrollador.setUbicacion(resultado.getString(4));
+            listadoDesarrolladores.add(desarrollador);
+
+        }
+        return listadoDesarrolladores;
+    }
+    
+    /**
+     * Obtiene una lista de juegos a partir del id del juego
+     *
+     * @param num
+     * @return Devuelve una colección de juegos por id
+     * @throws SQLException
+     */
+    public ArrayList<Desarrollador> irPagina(int num) throws SQLException {
+        return getDesarrolladorPaginar(num * 6 + 1, (num + 1) * 6);
+    }
     /**
      * Elimina un desarrollador
      *
-     * @param idJuego El id del desarrollador a eliminar
+     * @param int El id del desarrollador a eliminar
      * @throws SQLException
      */
     public void eliminarDesarrollador(int idDesarrollador) throws SQLException {
@@ -119,6 +148,8 @@ public class DesarrolladorDAO {
      * @param desarrollador
      * @throws SQLException
      */
+    
+    
     public void registrarDesarrollador(Desarrollador desarrollador) throws SQLException {
 
         String consulta = "INSERT INTO DESARROLLADORES VALUES(?, ?, ?, ?)";

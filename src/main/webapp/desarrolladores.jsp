@@ -22,7 +22,7 @@
           <br>
           <a href="buscarJuego.jsp">Buscar</a> 
           <a href="juegos.jsp?page=0">Ver Juegos</a>
-          <a href="desarrolladores.jsp">Ver Desarrolladores</a>
+          <a href="desarrolladores.jsp?page=0">Ver Desarrolladores</a>
           <a href="registrarJuego.jsp">Registrar Juegos</a>
           <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a>  
           <a href="novedades.html">Novedades</a>         
@@ -53,33 +53,40 @@
                 </ul> 
                        
 
-        <%
-            DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
-            ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.getDesarrolladores();
-        %>
-        <ul id="put0">
-        <%
-            for (Desarrollador desarrollador : desarrolladores) {
-        %>
-        <li id="put1" ><div id="tG" ><a href="detalles-desarrollador.jsp?nombre=<%= desarrollador.getNombreDesarrollador()%>&email=<%= desarrollador.getEmailDesarrollador()%>&pais=<%= desarrollador.getUbicacion()%>"><%= desarrollador.getNombreDesarrollador()%></a></div>
-            <a href="modificarDesarrollador.jsp?id=<%= desarrollador.getIdDesarrollador()%>&nombre=<%=desarrollador.getNombreDesarrollador()%>&email=<%=desarrollador.getEmailDesarrollador()%>&ubicacion=<%=desarrollador.getUbicacion()%>">Modificar</a></li><a href="eliminar-desarrollador?id=<%= desarrollador.getIdDesarrollador()%>">Eliminar</a></li>
-        <br><br>
+                <%
+                    DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
+                    int pagina = (Integer.parseInt(request.getParameter("page")))|0;
+                    ArrayList<Desarrollador> desarrolladores = desarrolladorDAO.irPagina(pagina);
+                %>
+                <ul id="put0">
+                <%
+                    for (Desarrollador desarrollador : desarrolladores) {
+                %>
+                <li id="put1" ><div id="tG" ><a href="detalles-desarrollador.jsp?nombre=<%= desarrollador.getNombreDesarrollador()%>&email=<%= desarrollador.getEmailDesarrollador()%>&pais=<%= desarrollador.getUbicacion()%>"><%= desarrollador.getNombreDesarrollador()%></a></div>
+                <a href="modificarDesarrollador.jsp?id=<%= desarrollador.getIdDesarrollador()%>&nombre=<%=desarrollador.getNombreDesarrollador()%>&email=<%=desarrollador.getEmailDesarrollador()%>&ubicacion=<%=desarrollador.getUbicacion()%>">Modificar</a></li><a href="eliminar-desarrollador?id=<%= desarrollador.getIdDesarrollador()%>">Eliminar</a></li>
+                <br><br>
                 <div class="lineblack"></div>
                 <br>
-        <%    
-            }
-        %>
-        </ul>        
-        <%
-            // Muestra el mensaje (si lo hay)
-            String message = request.getParameter("message");
-            if (message != null) {
-        %>
-            <p style='color:green'><%= message %></p>
-        <%        
-            }
-        %>
-        <ul id="put0">
+                <%    
+                    }
+                %>
+                </ul>
+                <a href="/easteregg/desarrolladores.jsp?page=<%=pagina-1%>">
+                    Anterior
+                </a>
+                <a href="/easteregg/desarrolladores.jsp?page=<%=pagina+1%>">
+                Siguiente
+                </a>
+                <%
+                    // Muestra el mensaje (si lo hay)
+                    String message = request.getParameter("message");
+                    if (message != null) {
+                %>
+                    <p style='color:green'><%= message %></p>
+                <%        
+                    }
+                %>
+                <ul id="put0">
                     <li id="put1"><img src="images/des1.jpg" alt="alt" /><img src="images/des2.jpg" alt="alt" /></li>
                     <li id="put1"><img src="images/des3.jpg" alt="alt" /><img src="images/des4.jpg" alt="alt" /></li>
                     <li id="put1"><img src="images/des5.jpg" alt="alt" /><img src="images/des6.jpg" alt="alt" /></li>
