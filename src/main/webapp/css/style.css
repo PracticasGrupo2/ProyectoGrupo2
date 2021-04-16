@@ -45,7 +45,7 @@ font-family: 'Press Start 2P', cursive;*/
 .bodyS{
     justify-content: center;
     display: flex;
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Chakra Petch', sans-serif;  
 }
 /* Formato para el divisor que contiene el gif de la moneda */
 /* Este para el divisor */
@@ -55,7 +55,7 @@ font-family: 'Press Start 2P', cursive;*/
     display: flex;
     
     margin-left: 2%;
-    margin-bottom: 10%;
+    margin-bottom: 3%;
 }
 /* Este para la imagen */
 .imgP img{
