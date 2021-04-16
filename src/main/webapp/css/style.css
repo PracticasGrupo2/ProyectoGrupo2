@@ -32,7 +32,7 @@ font-family: 'Press Start 2P', cursive;*/
     width: 100%;
     height: 40%;
     
-    margin-top: 6%;
+    margin-top: 1%;
     margin-bottom: 0%;
     
     justify-content: center;
@@ -40,6 +40,12 @@ font-family: 'Press Start 2P', cursive;*/
     
     font-size: 100px;
     font-family: 'Permanent Marker', cursive;       
+}
+
+.bodyS{
+    justify-content: center;
+    display: flex;
+    font-family: 'Permanent Marker', cursive;
 }
 /* Formato para el divisor que contiene el gif de la moneda */
 /* Este para el divisor */
