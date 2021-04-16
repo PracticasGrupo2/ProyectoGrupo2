@@ -11,19 +11,19 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Chakra+Petch:wght@300&family=Permanent+Marker&family=Press+Start+2P&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--enlace para iconos-->                
-        <title>Buscar juegos</title>                
+        <title>Search games</title>                
     </head>
     <body>
         <!-- menu -->
         <div class="navIzq">
-          <a id="esp" href="#">OPCIONES</a>
+          <a id="esp" href="#">Options</a>
           <br>
-          <a href="buscarJuego.jsp">Buscar</a> 
-          <a href="juegos.jsp?page=0">Ver Juegos</a>
-          <a href="desarrolladores.jsp?page=0">Ver Desarrolladores</a>
-          <a href="registrarJuego.jsp">Registrar Juegos</a>
-          <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a>  
-          <a href="novedades.html">Novedades</a>         
+          <a href="buscarJuego.jsp">Search</a> 
+          <a href="juegos.jsp?page=0">Games</a>
+          <a href="desarrolladores.jsp?page=0">Developers</a>
+          <a href="registrarJuego.jsp">Register a game</a>
+          <a href="registrarDesarrollador.jsp">Register a developer</a>  
+          <a href="novedades.html">News</a>         
            <!-- redes -->   
             <div class="footN">
                 <a href="https://m.facebook.com/login/?locale2=es_ES" class="fa fa-facebook"></a><!--enlaces ficticios a redes de la página-->           
@@ -37,12 +37,12 @@
         <div class="bodyM">
             <div class="d1">
                 <form method="post" action="busqueda.jsp" class="container">
-                    <h1>Buscar juego</h1>
+                    <h1>Search game</h1>
                     <br><br>
-                    Buscar juego por nombre:
-                    <input type="text" name="nombre" size="40px" placeholder="Escribe aquí el nombre del juego" id="black"/><br/>
+                    Search game by title:
+                    <input type="text" name="nombre" size="40px" placeholder="Write title game here" id="black"/><br/>
 
-                    <input type="submit" value="Buscar" class="btn"/>
+                    <input type="submit" value="Search" class="btn"/>
                 </form>
             </div>           
         </div>        

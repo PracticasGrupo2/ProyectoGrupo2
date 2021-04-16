@@ -13,19 +13,19 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Chakra+Petch:wght@300&family=Permanent+Marker&family=Press+Start+2P&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--enlace para iconos-->
-        <title>Desarrolladores</title>   
+        <title>Developers</title>   
     </head>
     <body>
         <!-- menu -->
         <div class="navIzq">
-          <a id="esp" href="#">OPCIONES</a>
+          <a id="esp" href="#">Options</a>
           <br>
-          <a href="buscarJuego.jsp">Buscar</a> 
-          <a href="juegos.jsp?page=0">Ver Juegos</a>
-          <a href="desarrolladores.jsp?page=0">Ver Desarrolladores</a>
-          <a href="registrarJuego.jsp">Registrar Juegos</a>
-          <a href="registrarDesarrollador.jsp">Registrar Desarrolladores</a>  
-          <a href="novedades.html">Novedades</a>         
+          <a href="buscarJuego.jsp">Search</a> 
+          <a href="juegos.jsp?page=0">Games</a>
+          <a href="desarrolladores.jsp?page=0">Developers</a>
+          <a href="registrarJuego.jsp">Register a game</a>
+          <a href="registrarDesarrollador.jsp">Register a developer</a>  
+          <a href="novedades.html">News</a>         
            <!-- redes -->   
             <div class="footN">
                 <a href="https://m.facebook.com/login/?locale2=es_ES" class="fa fa-facebook"></a><!--enlaces ficticios a redes de la página-->           
@@ -39,7 +39,7 @@
 
         <div class="bodyM">  
             <div class="lineblack"></div>
-                <h1 id="tit">Lista de desarrolladores</h1>
+                <h1 id="tit">Developer list</h1>
                 <div class="lineblack"></div>
                 <%
                     DesarrolladorDAO desarrolladorDAO = new DesarrolladorDAO();
@@ -51,7 +51,7 @@
                 <div class="pagi">
                     <%if(pagina > 0) {%>
                         <a href="/easteregg/desarrolladores.jsp?page=<%=pagina-1%>">
-                        < Anterior
+                        < Back
                         </a>
                     <%}%>
                     <%if(numDesarrolladores > 6) {%>
@@ -59,14 +59,14 @@
                     <%}%>
                     <%if (pagina < numDesarrolladores / 6 - 1) {%>
                         <a href="/easteregg/desarrolladores.jsp?page=<%=pagina+1%>">
-                        Siguiente >
+                        Next >
                         </a>
                     <%}%>
                 </div>
                     <div class="pagi" style="position: fixed; bottom: 0px; padding-right: 9.3%;">
                     <%if(pagina > 0) {%>
                         <a href="/easteregg/desarrolladores.jsp?page=<%=pagina-1%>">
-                        < Anterior
+                        < Back
                         </a>
                     <%}%>
                     <%if(numDesarrolladores > 6) {%>
@@ -74,7 +74,7 @@
                     <%}%>
                     <%if (pagina < numDesarrolladores / 6 - 1) {%>
                         <a href="/easteregg/desarrolladores.jsp?page=<%=pagina+1%>">
-                        Siguiente >
+                        Next >
                         </a>
                     <%}%>
                 </div>
@@ -102,8 +102,8 @@
                     for (Desarrollador desarrollador : desarrolladores) {
                 %>
                 <li id="put1" ><div id="tG" ><a href="detalles-desarrollador.jsp?nombre=<%= desarrollador.getNombreDesarrollador()%>&email=<%= desarrollador.getEmailDesarrollador()%>&pais=<%= desarrollador.getUbicacion()%>"><%= desarrollador.getNombreDesarrollador()%></a></div>
-                <a href="modificarDesarrollador.jsp?id=<%= desarrollador.getIdDesarrollador()%>&nombre=<%=desarrollador.getNombreDesarrollador()%>&email=<%=desarrollador.getEmailDesarrollador()%>&ubicacion=<%=desarrollador.getUbicacion()%>">Modificar</a></li>
-                <a href="eliminar-desarrollador?page=<%=pagina%>&id=<%= desarrollador.getIdDesarrollador()%>">Eliminar</a></li>
+                <a href="modificarDesarrollador.jsp?id=<%= desarrollador.getIdDesarrollador()%>&nombre=<%=desarrollador.getNombreDesarrollador()%>&email=<%=desarrollador.getEmailDesarrollador()%>&ubicacion=<%=desarrollador.getUbicacion()%>">Modify</a></li>
+                <a href="eliminar-desarrollador?page=<%=pagina%>&id=<%= desarrollador.getIdDesarrollador()%>">Delete</a></li>
                 <br><br>
                 <div class="lineblack"></div>
                 <br>
