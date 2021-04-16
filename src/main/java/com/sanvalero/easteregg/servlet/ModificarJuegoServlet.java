@@ -34,9 +34,9 @@ public class ModificarJuegoServlet extends HttpServlet {
         try {
             juegoDAO.modificarJuego(juego);
 
-            out.write("Juego modificado con &eacute;xito");
+            out.write("Game successfully modified");
         } catch (SQLException sqle) {
-            out.write("Este juego no se ha podido modificar");
+            out.write("This developer could not be modified");
             sqle.printStackTrace();
         }
     }

@@ -21,13 +21,13 @@ public class GetJuegoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
         PrintWriter out = response.getWriter();
-        out.println("<p>Listado de juegos (con servlet)</p>");
+//        out.println("<p>Listado de juegos (con servlet)</p>");
         JuegoDAO juegoDAO = new JuegoDAO();
         try {
             ArrayList<Juego> juegos = juegoDAO.getJuegos();
             out.println("<ul>");
             for (Juego juego : juegos) {
-                out.println("<li>" + juego.getTituloJuego() + " <a href='eliminar-juegos?id=" + juego.getIdJuego() + "'>Eliminar</a></li>");
+                out.println("<li>" + juego.getTituloJuego() + " <a href='eliminar-juegos?id=" + juego.getIdJuego() + "'>Delete</a></li>");
             }
 
             // Muestra el mensaje (si lo hay)

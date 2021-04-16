@@ -29,9 +29,9 @@ public class EliminarJuegoServlet extends HttpServlet {
         try {
             juegoDAO.eliminarJuego(idJuego);
             if (redireccion.length() == 2){
-                response.sendRedirect("busqueda.jsp?message=Juego eliminado");
+                response.sendRedirect("busqueda.jsp?message=Game deleted");
             } else {
-                response.sendRedirect("juegos.jsp?page=" + pagina + "&message=Juego eliminado");
+                response.sendRedirect("juegos.jsp?page=" + pagina + "&message=Game deteled");
             }
         } catch (SQLException sqle) {
             Logger.getLogger(EliminarJuegoServlet.class.getName()).log(Level.SEVERE, null, sqle);
